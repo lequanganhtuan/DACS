@@ -24,7 +24,7 @@
                         </div>
                         <div class="group-form">
                             {!! Form::label('slug', 'Slug', []) !!}
-                            {!! Form::text('slug', isset($country) ? $country->title : '', ['class'=>'form-control','placeholder'=>'Điền dữ liệu vào...','id'=>'convert_slug']) !!}
+                            {!! Form::text('slug', isset($country) ? $country->slug : '', ['class'=>'form-control','placeholder'=>'Điền dữ liệu vào...','id'=>'convert_slug']) !!}
                         </div>
                         <div class="group-form">
                             {!! Form::label('desciption', 'Description', []) !!}
