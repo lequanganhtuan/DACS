@@ -20,7 +20,11 @@
                     @endif
                         <div class="group-form">
                             {!! Form::label('title', 'Title', []) !!}
-                            {!! Form::text('title', isset($country) ? $country->title : '', ['class'=>'form-control','placeholder'=>'Điền dữ liệu vào...']) !!}
+                            {!! Form::text('title', isset($country) ? $country->title : '', ['class'=>'form-control','placeholder'=>'Điền dữ liệu vào...','id'=>'slug', 'onkeyup'=>'ChangeToSlug()']) !!}
+                        </div>
+                        <div class="group-form">
+                            {!! Form::label('slug', 'Slug', []) !!}
+                            {!! Form::text('slug', isset($country) ? $country->title : '', ['class'=>'form-control','placeholder'=>'Điền dữ liệu vào...','id'=>'convert_slug']) !!}
                         </div>
                         <div class="group-form">
                             {!! Form::label('desciption', 'Description', []) !!}
@@ -48,6 +52,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
                         <th scope="col">Decription</th>
+                        <th scope="col">SLug</th>
                         <th scope="col">Active/Inactive</th>
                         <th scope="col">Manage</th>
                     </tr>
@@ -58,6 +63,7 @@
                             <th scope="row">{{$key}}</th>
                             <td>{{$cate -> title}}</td>
                             <td>{{$cate -> description}}</td>
+                            <td>{{$cate -> slug}}</td>
                             <td>
                                 @if($cate -> status )
                                     Hiển thị
