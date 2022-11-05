@@ -11,7 +11,7 @@
  Target Server Version : 100424
  File Encoding         : 65001
 
- Date: 05/11/2022 15:47:27
+ Date: 05/11/2022 17:21:25
 */
 
 SET NAMES utf8mb4;
@@ -26,13 +26,16 @@ CREATE TABLE `categories`  (
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `status` int NULL DEFAULT NULL,
+  `slug` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of categories
 -- ----------------------------
-INSERT INTO `categories` VALUES (1, 'Phim mới', 'Cập nhật mỗi ngày', 1);
+INSERT INTO `categories` VALUES (1, 'Phim mới', 'Cập nhật mỗi ngày', 1, 'phim-moi');
+INSERT INTO `categories` VALUES (4, 'Phim bộ', 'Phim bộ', 1, 'phim-bo');
+INSERT INTO `categories` VALUES (5, 'Phim chiếu rạp', 'Phim chiếu rạp', 0, 'phim-chieu-rap');
 
 -- ----------------------------
 -- Table structure for countries
@@ -43,13 +46,15 @@ CREATE TABLE `countries`  (
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `status` int NULL DEFAULT NULL,
+  `slug` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of countries
 -- ----------------------------
-INSERT INTO `countries` VALUES (1, 'Nhật Bản', 'Nhật Bản là một quốc gia hải đảo, nằm ở vùng đông Á, châu Á trên biển Thái Bình Dương. Quốc gia này giáp với rìa đông của biển Nhật Bản, Biển Hoa Đông, bán đảo Triều Tiên, Trung Quốc và vùng viễn đông của Nga.', 1);
+INSERT INTO `countries` VALUES (1, 'Nhật Bản', 'Nhật Bản là một quốc gia hải đảo, nằm ở vùng đông Á, châu Á trên biển Thái Bình Dương. Quốc gia này giáp với rìa đông của biển Nhật Bản, Biển Hoa Đông, bán đảo Triều Tiên, Trung Quốc và vùng viễn đông của Nga.', 1, 'nhat-ban');
+INSERT INTO `countries` VALUES (2, 'Hoa Kỳ', 'Hoa Kỳ', 1, 'hoa-ky');
 
 -- ----------------------------
 -- Table structure for episodes
@@ -96,13 +101,15 @@ CREATE TABLE `genres`  (
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_croatian_ci NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_croatian_ci NULL DEFAULT NULL,
   `status` int NULL DEFAULT NULL,
+  `slug` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of genres
 -- ----------------------------
-INSERT INTO `genres` VALUES (1, 'Tình cảm', 'thể loại tình cảm', 1);
+INSERT INTO `genres` VALUES (3, 'Drama', 'Drama', 1, 'drama');
+INSERT INTO `genres` VALUES (4, 'Tình cảm', 'Tình cảm', 1, 'tinh-cam');
 
 -- ----------------------------
 -- Table structure for migrations
