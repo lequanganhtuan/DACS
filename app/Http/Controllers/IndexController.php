@@ -12,10 +12,12 @@ use App\Models\Episode;
 class IndexController extends Controller
 {
     public function home(){
+        $phimhot=Movie::where('hot',1)->where('status',1)->get();
         $category = Category::orderBy('id','DESC')->where('status',1)->get();
-        $genre = Genre::orderBy('id','DESC')->get();
-        $country = Country::orderBy('id','DESC')->get();
-        return view('Clients.Home', compact('category', 'genre', 'country'));
+        $genre = Genre::orderBy('id','DESC')->where('status',1)->get();
+        $country = Country::orderBy('id','DESC')->where('status',1)->get();
+        $category_home = Category::with('movie')->orderBy('id','DESC')->where('status',1)->get();
+        return view('Clients.Home', compact('category', 'genre', 'country','category_home','phimhot'));
     }
 
     public function category($slug){
@@ -23,20 +25,21 @@ class IndexController extends Controller
         $genre = Genre::orderBy('id','DESC')->get();
         $country = Country::orderBy('id','DESC')->get();
         $cate_slug = Category::where('slug',$slug)->first();
+       
         return view('Clients.Category', compact('category', 'genre', 'country', 'cate_slug'));
     }
     public function genre($slug){
         $category = Category::orderBy('id','DESC')->where('status',1)->get();
-        $genre = Genre::orderBy('id','DESC')->get();
-        $country = Country::orderBy('id','DESC')->get();
-        $gen_slug = Genre::where('slug',$slug)->first();
+        $genre = Genre::orderBy('id','DESC')->where('status',1)->get();
+        $country = Country::orderBy('id','DESC')->where('status',1)->get();
+        $gen_slug = Genre::where('slug',$slug)->where('status',1)->first();
         return view('Clients.Genre', compact('category', 'genre', 'country','gen_slug'));
     }
     public function country($slug){
         $category = Category::orderBy('id','DESC')->where('status',1)->get();
-        $genre = Genre::orderBy('id','DESC')->get();
-        $country = Country::orderBy('id','DESC')->get();
-        $coun_slug = Country::where('slug',$slug)->first();
+        $genre = Genre::orderBy('id','DESC')->where('status',1)->get();
+        $country = Country::orderBy('id','DESC')->where('status',1)->get();
+        $coun_slug = Country::where('slug',$slug)->where('status',1)->first();
         return view('Clients.Country', compact('category', 'genre', 'country', 'coun_slug'));
     }
     public function movie(){
