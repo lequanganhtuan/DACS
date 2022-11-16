@@ -73,9 +73,12 @@
         </nav>
         <main class="py-4">
             @if (Auth::id())
-                <div class="container">
-                @include('layouts.navbar')
-                </div>
+                @if(Auth::user()->vt=2)
+                    <div class="container">
+                    @include('layouts.navbar')
+                    </div>
+                @else
+                @endif  
             @endif
             @yield('content')
         </main>
@@ -85,6 +88,7 @@
     <script type="text/javascript">
         $(document).ready( function () {
             $('#phim').DataTable();
+            $('#quocgia').DataTable();
         });
         function ChangeToSlug()
             {

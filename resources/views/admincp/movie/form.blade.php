@@ -56,6 +56,14 @@
                             {!! Form::select('hot',['1'=>'Hiển thị','0'=>'Không hiển thị'], isset($movie) ? $movie->hot : '', ['class'=>'form-control']) !!}
                         </div>
                         <div class="group-form">
+                            {!! Form::label('res', 'Resolution', []) !!}
+                            @if (!isset($movie))
+                            {!! Form::select('resolution',['1'=>'SD','0'=>'HD'], null, ['class'=>'form-control']) !!}
+                            @else
+                            {!! Form::select('resolution',['1'=>'SD','0'=>'HD'], $movie->resolution, ['class'=>'form-control']) !!}
+                            @endif
+                        </div>
+                        <div class="group-form">
                             {!! Form::label('Image', 'Image', []) !!}
                             <br>
                             {!! Form::file('anh', ['class'=>'form-control-file']) !!}

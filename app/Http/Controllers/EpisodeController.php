@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Episode;
+use App\Models\Movie;
 
 class EpisodeController extends Controller
 {
@@ -23,7 +25,9 @@ class EpisodeController extends Controller
      */
     public function create()
     {
-        //
+        $movie = Movie::pluck('title','id');
+        $list = Episode::with('movie')->orderBy('id','DESC')->get();
+        return view('admincp.episode.form', compact('list','movie'));
     }
 
     /**
@@ -34,7 +38,13 @@ class EpisodeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $episode =  new Episode();
+        $episode -> movie_id = $data['movie_id'];
+        $episode -> linkphim = $data['linkphim'];
+        $episode -> episode = $data['episode'];
+        $episode->save();
+        return redirect()->back();
     }
 
     /**

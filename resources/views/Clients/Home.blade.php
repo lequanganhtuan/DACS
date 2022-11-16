@@ -47,9 +47,15 @@
             @foreach ($phimhot as $key => $hot)
             <article class="thumb grid-item post-38498">
                <div class="halim-item">
-                  <a class="halim-thumb" href="chitiet.php" title="{{$hot->title}}">
+                  <a class="halim-thumb" href="{{route('movie', $hot->slug)}}" title="{{$hot->title}}">
                      <figure><img class="lazy img-responsive" src="{{asset('uploads/movie/'.$hot->image)}}" alt="Đại Thánh Vô Song" title="{{$hot->title}}"></figure>
-                     <span class="status">HD</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> 
+                     <span class="status">
+                        @if($hot -> resolution )
+                                    SD
+                                 @else
+                                    HD
+                                 @endif
+                        </span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> 
                      <div class="icon_overlay"></div>
                      <div class="halim-post-title-box">
                         <div class="halim-post-title ">
@@ -65,7 +71,7 @@
          <script>
             $(document).ready(function($) {				
             var owl = $('#halim_related_movies-2');
-            owl.owlCarousel({loop: true,margin: 5,autoplay: true,autoplayTimeout: 4000,autoplayHoverPause: true,nav: true,navText: ['<i class="hl-down-open rotate-left"></i>', '<i class="hl-down-open rotate-right"></i>'],responsiveClass: true,responsive: {0: {items:2},480: {items:3}, 600: {items:4},1000: {items: 5}}})});
+            owl.owlCarousel({loop: true,margin: 5,autoplay: true,autoplayTimeout: 4000,autoplayHoverPause: true,nav: true,navText: ['<i class="hl-down-open rotate-left"></i>', '<i class="hl-down-open rotate-right"></i>'],responsiveClass: true,responsive: {0: {items:2},480: {items:3}, 600: {items:4},1000: {items: 6}}})});
          </script>
       </div>
       <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
@@ -80,7 +86,7 @@
                @foreach($cate_home->movie->take(12) as $key => $movie_home)
                <article class="col-md-3 col-sm-3 col-xs-6 thumb grid-item post-37606">
                   <div class="halim-item">
-                     <a class="halim-thumb" href="chitiet.php">
+                     <a class="halim-thumb" href="{{route('movie', $movie_home->slug)}}">
                         <figure><img class="lazy img-responsive" src="{{asset('uploads/movie/'.$movie_home->image)}}" alt="" title="{{$movie_home->title}}"></figure>
                         <span class="status">TẬP 15</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> 
                         <div class="icon_overlay"></div>

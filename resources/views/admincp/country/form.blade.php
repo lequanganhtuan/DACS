@@ -6,7 +6,6 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Quản lí quốc gia</div>
-
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -46,7 +45,7 @@
                     {!! Form::close() !!}
                 </div>
             </div>
-            <table class="table">
+            <table class="table" id="quocgia">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -89,3 +88,4 @@
     </div>
 </div>
 @endsection
+

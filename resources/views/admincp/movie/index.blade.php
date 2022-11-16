@@ -18,6 +18,7 @@
                         <th scope="col">Country</th>
                         <th scope="col">Genre</th>
                         <th scope="col">Hot</th>
+                        <th scope="col">Resolution</th>
                         <th scope="col">Manage</th>
                         
                     </tr>
@@ -27,7 +28,7 @@
                         <tr>
                             <th scope="row">{{$key}}</th>
                             <td>{{$cate -> title}}</td>
-                            <td><img width ="10%" src="{{asset('uploads/movie/'.$cate->image)}}" alt=""></td>
+                            <td><img width ="30%" src="{{asset('uploads/movie/'.$cate->image)}}" alt=""></td>
                             <td>{{$cate -> description}}</td>
                             <td>{{$cate -> slug}}</td>
                             <td>
@@ -45,6 +46,13 @@
                                     Hiển thị
                                 @else
                                     Không hiển thị
+                                @endif
+                            </td>
+                            <td>
+                                @if($cate -> resolution )
+                                    SD
+                                @else
+                                    HD
                                 @endif
                             </td>
                             <td>
