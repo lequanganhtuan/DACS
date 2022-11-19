@@ -7,7 +7,9 @@ use App\Models\Movie;
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\Genre;
-
+use Carbon\Carbon;
+use Storage;
+use File;
 class MovieController extends Controller
 {
     /**
@@ -18,6 +20,12 @@ class MovieController extends Controller
     public function index()
     {
         $list = Movie::with('category','genre','country')->orderBy('id','DESC')->get();
+        $path = public_path()."/json/";
+        if (!is_dir($path))
+        {
+            mkdir($path,0777,true);
+        }
+        File::put($path.'movies.json',json_encode($list));
         return view('admincp.movie.index', compact('list'));
     }
 
@@ -47,10 +55,17 @@ class MovieController extends Controller
         $movie = new Movie();
         $movie->title = $data['title'];
         $movie->hot = $data['hot'];
+        $movie->time = $data['time'];
+        $movie->phude = $data['phude'];
+        $movie->sotap = $data['sotap'];
+        $movie->director  = $data['director'];
         $movie->resolution = $data['resolution'];
         $movie->genre_id = $data['genre_id'];
         $movie->slug = $data['slug'];
         $movie->description = $data['description'];
+        $movie->status = $data['status'];
+        $movie->ngaytao = Carbon::now('Asia/Ho_Chi_Minh');
+        $movie->ngaycapnhat = Carbon::now('Asia/Ho_Chi_Minh');
         $movie->status = $data['status'];
         $movie->country_id = $data['country_id'];
         $movie->category_id = $data['category_id'];
@@ -101,6 +116,10 @@ class MovieController extends Controller
         $movie = Movie::find($id);
         $movie->title = $data['title'];
         $movie->hot = $data['hot'];
+        $movie->time = $data['time'];
+        $movie->sotap = $data['sotap'];
+        $movie->phude = $data['phude'];
+        $movie->director  = $data['director'];
         $movie->resolution = $data['resolution'];
         $movie->genre_id = $data['genre_id'];
         $movie->slug = $data['slug'];
@@ -108,6 +127,7 @@ class MovieController extends Controller
         $movie->status = $data['status'];
         $movie->country_id = $data['country_id'];
         $movie->category_id = $data['category_id'];
+        $movie->ngaycapnhat = Carbon::now('Asia/Ho_Chi_Minh');
         $iimage = $request->file('anh');
         if($iimage)
         {

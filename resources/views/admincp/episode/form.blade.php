@@ -5,8 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Quản lí danh mục</div>
-
+                <a href="{{route('episode.index')}}" class="btn btn-primary">Liệt kê tập phim</a>
+                <div class="card-header">Quản lí tập phim</div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -19,16 +19,20 @@
                     {!! Form::open(['route'=>['episode.update',$episode->id],'method'=>'PUT']) !!}
                     @endif
                         <div class="group-form">
-                            {!! Form::label('Movie', 'Movie', []) !!}
-                            {!! Form::select('movie_id',$movie,  isset($episode) ? $episode->movie_id : '', ['class'=>'form-control']) !!}
+                            {!! Form::label('Movie', 'Tên phim', []) !!}
+                            {!! Form::select('movie_id',['0'=>'Chọn phim','Phim mới nhất'=>$movie],  isset($episode) ? $episode->movie_id : '', ['class'=>'form-control select-movie']) !!}
                         </div>
                         <div class="group-form">
                             {!! Form::label('Link', 'Link', []) !!}
                             {!! Form::text('linkphim', isset($episode) ? $episode->linkphim : '', ['class'=>'form-control','placeholder'=>'Điền dữ liệu vào...']) !!}
                         </div>
                         <div class="group-form">
-                            {!! Form::label('Episode', 'Episode', []) !!}
-                            {!! Form::text('episode', isset($episode) ? $episode->episode : '', ['class'=>'form-control','placeholder'=>'Điền dữ liệu vào...']) !!}
+                            {!! Form::label('tapphim', 'Tập Phim', []) !!}
+                        @if(isset($episode))
+                            {!! Form::text('episode',isset($episode) ? $episode->episode : '', ['class'=>'form-control','readonly']) !!}
+                        @else
+                            <select name="episode" id="episode" class="form-control"></select>
+                        @endif
                         </div>
                         @if (!isset($episode))
                         {!! Form::submit('Thêm', ['class'=>'btn btn-success']) !!}
@@ -38,37 +42,6 @@
                     {!! Form::close() !!}
                 </div>
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Movie</th>
-                        <th scope="col">Link</th>
-                        <th scope="col">Episode</th>
-                        <th scope="col">Manage</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($list as $key => $cate)
-                        <tr>
-                            <th scope="row">{{$key}}</th>
-                            <td>{{$cate -> movie -> title}}</td>
-                            <td>{{$cate -> linkphim}}</td>
-                            <td>{{$cate -> episode}}</td>
-                            <td>
-                                {!! Form::open([
-                                    'method' =>'DELETE',
-                                    'route' =>['episode.destroy',$cate->id],
-                                    'onsubmit' => 'return confirm("Delete?")'
-                                ]) !!}
-                                    {!! Form::submit('Xóa', ['class'=>'btn btn-danger']) !!}
-                                {!! Form::close() !!}
-                                <a href="{{route('episode.edit',$cate->id )}}" class="btn btn-warning">Sửa</a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
         </div>
     </div>
 </div>

@@ -89,6 +89,7 @@
         $(document).ready( function () {
             $('#phim').DataTable();
             $('#quocgia').DataTable();
+            $('#tapphim').DataTable();
         });
         function ChangeToSlug()
             {
@@ -122,6 +123,19 @@
                 document.getElementById('convert_slug').value = slug;
             }
     
+        </script>
+        <script type="text/javascript">
+            $('.select-movie').change(function(){
+                var id = $(this).val();
+                $.ajax({
+                    url:"{{route('select-movie')}}",
+                    method:"GET",
+                    data:{id:id},
+                    success: function(data){
+                        $('#episode').html(data);
+                    }
+                })
+            })
         </script>
 </body>
 </html>

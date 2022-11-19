@@ -15,7 +15,8 @@ class EpisodeController extends Controller
      */
     public function index()
     {
-        //
+        $list = Episode::with('movie')->orderBy('id','DESC')->get();
+        return view('admincp.episode.index', compact('list'));
     }
 
     /**
@@ -27,7 +28,7 @@ class EpisodeController extends Controller
     {
         $movie = Movie::pluck('title','id');
         $list = Episode::with('movie')->orderBy('id','DESC')->get();
-        return view('admincp.episode.form', compact('list','movie'));
+        return view('admincp.episode.form', compact('movie'));
     }
 
     /**
@@ -66,7 +67,10 @@ class EpisodeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $episode = Episode::find($id);
+        $movie = Movie::pluck('title','id');
+        $list = Episode::with('movie')->orderBy('id','DESC')->get();
+        return view('admincp.episode.form', compact('movie','episode'));
     }
 
     /**
@@ -78,7 +82,13 @@ class EpisodeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $episode =  Episode::find($id);
+        $episode -> movie_id = $data['movie_id'];
+        $episode -> linkphim = $data['linkphim'];
+        $episode -> episode = $data['episode'];
+        $episode->save();
+        return redirect()->back();
     }
 
     /**
@@ -89,6 +99,19 @@ class EpisodeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $episode = Episode::find($id)->delete();
+        return redirect()->back();
+    }
+    public function select_movie()
+    {
+        $id = $_GET['id'];
+        $movie_by_id = Movie::find($id);
+        $output ='<option value="">---Chọn tập phim---</option>';
+        for ($i=1;$i<=$movie_by_id->sotap;$i++)
+        {
+            $output .='<option value="'.$i.'">'.$i.'</option>';
+
+        }
+        echo $output;
     }
 }

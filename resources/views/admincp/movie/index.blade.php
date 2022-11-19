@@ -9,17 +9,23 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Decription</th>
-                        <th scope="col">SLug</th>
-                        <th scope="col">Active/Inactive</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Country</th>
-                        <th scope="col">Genre</th>
+                        <th scope="col">Tiêu đề</th>
+                        <th scope="col">Đạo diễn</th>
+                        <th scope="col">Hình ảnh</th>
+                        <th scope="col">Mô tả</th>
+                        <th scope="col">Thời lượng</th>
+                        <th scope="col">Số tập</th>
+                        <th scope="col">Slug</th>
+                        <th scope="col">Hiển thị</th>
+                        <th scope="col">Danh mục</th>
+                        <th scope="col">Quốc gia</th>
+                        <th scope="col">Thể Loại</th>
                         <th scope="col">Hot</th>
-                        <th scope="col">Resolution</th>
-                        <th scope="col">Manage</th>
+                        <th scope="col">Chất lượng</th>
+                        <th scope="col">Phụ đề</th>
+                        <th scope="col">Ngày tạo</th>
+                        <th scope="col">Ngày cập nhật</th>
+                        <th scope="col">Quản lí</th>
                         
                     </tr>
                     </thead>
@@ -28,8 +34,11 @@
                         <tr>
                             <th scope="row">{{$key}}</th>
                             <td>{{$cate -> title}}</td>
-                            <td><img width ="30%" src="{{asset('uploads/movie/'.$cate->image)}}" alt=""></td>
+                            <td>{{$cate -> director}}</td>
+                            <td><img width ="120%" src="{{asset('uploads/movie/'.$cate->image)}}" alt=""></td>
                             <td>{{$cate -> description}}</td>
+                            <td>{{$cate -> time}}</td>
+                            <td>{{$cate -> sotap}}</td>
                             <td>{{$cate -> slug}}</td>
                             <td>
                                 @if($cate -> status )
@@ -49,12 +58,16 @@
                                 @endif
                             </td>
                             <td>
-                                @if($cate -> resolution )
+                                @if($cate -> resolution == 1)
                                     SD
+                                @elseif($cate -> resolution == 0)
+                                        HD
                                 @else
-                                    HD
+                                        Full HD
                                 @endif
                             </td>
+                            <td>{{$cate -> ngaytao}}</td>
+                            <td>{{$cate -> ngaycapnhat}}</td>
                             <td>
                                 {!! Form::open([
                                     'method' =>'DELETE',

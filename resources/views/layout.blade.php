@@ -11,15 +11,15 @@
       <link rel="shortcut icon" href="https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png" type="image/x-icon" />
       <meta name="revisit-after" content="1 days" />
       <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
-      <title>Phim hay 2021 - Xem phim hay nhất</title>
-      <meta name="description" content="Phim hay 2021 - Xem phim hay nhất, xem phim online miễn phí, phim hot , phim nhanh" />
+      <title>MovieZ - Xem phim hay nhất</title>
+      <meta name="description" content="MovieZ - Xem phim hay nhất, xem phim online miễn phí, phim hot , phim nhanh" />
       <link rel="canonical" href="">
       <link rel="next" href="" />
       <meta property="og:locale" content="vi_VN" />
-      <meta property="og:title" content="Phim hay 2020 - Xem phim hay nhất" />
-      <meta property="og:description" content="Phim hay 2020 - Xem phim hay nhất, phim hay trung quốc, hàn quốc, việt nam, mỹ, hong kong , chiếu rạp" />
+      <meta property="og:title" content="MovieZ - Xem phim hay nhất" />
+      <meta property="og:description" content="MovieZ - Xem phim nhật bản hay nhất" />
       <meta property="og:url" content="" />
-      <meta property="og:site_name" content="Phim hay 2021- Xem phim hay nhất" />
+      <meta property="og:site_name" content="MovieZ- Xem phim hay nhất" />
       <meta property="og:image" content="" />
       <meta property="og:image:width" content="300" />
       <meta property="og:image:height" content="55" />
@@ -29,33 +29,72 @@
       <link rel='stylesheet' id='style-css' href='{{ asset('css/style.css') }}' media='all' />
       <link rel='stylesheet' id='wp-block-library-css' href='{{ asset('css/style.min.css') }}' media='all' />
       <script type='text/javascript' src='{{ asset('js/jquery.min.js') }}' id='halim-jquery-js'></script>
+      <script type='text/javascript'>
+         $(document).ready(function()
+         {
+            $('#timkiem').keyup(function()
+            {
+               $('#result').html('');
+               var search = $('#timkiem').val();
+               if(search!''){
+                  var exp = new RegExp(search,"i");
+                  $.getJSON('/json/movies.json', function(data){
+                     $.each(data, function(key, value){
+                        if (value.title.search(exp) != -1) {
+                           $('#result').append('<li style="cursor:pointer;" class="list-group-item">phim da tim</li>');
+                        }
+                     });
+                  })
+               }
+            })
+         })
+      </script>
+      
       <style type="text/css" id="wp-custom-css">
          .textwidget p a img {
          width: 100%;
          }
       </style>
-      <style>#header .site-title {background: url(https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png) no-repeat top left;background-size: contain;text-indent: -9999px;}</style>
+      <style>
+      #header .site-title {
+         background: url(https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png) 
+         no-repeat top left;
+         background-size: contain;
+         text-indent: -9999px;
+      }
+      </style>
    </head>
    <body class="home blog halimthemes halimmovies" data-masonry="">
       <header id="header">
          <div class="container">
             <div class="row" id="headwrap">
                <div class="col-md-3 col-sm-6 slogan">
-                  <p class="site-title"><a class="logo" href="" title="phim hay ">Phim Hay</p>
+                  <p class="site-title"><a class="logo" href="{{route('homepage')}}" title="phim hay "></p>
                   </a>
                </div>
                <div class="col-md-5 col-sm-6 halim-search-form hidden-xs">
                   <div class="header-nav">
                      <div class="col-xs-12">
-                        <form id="search-form-pc" name="halimForm" role="search" action="" method="GET">
-                           <div class="form-group">
+                        <style type="text/css">
+                           /* ul#result 
+                           {
+                              position: absolute;
+                              z-index:9999;
+                              background: #1b2d3c;
+                              width: 94%;
+                              padding:10px;
+                              margin:1px;
+                           } */
+                        </style>
+                           <div class="form-group form-timkiem">
                               <div class="input-group col-xs-12">
-                                 <input id="search" type="text" name="s" class="form-control" placeholder="Tìm kiếm..." autocomplete="off" required>
-                                 <i class="animate-spin hl-spin4 hidden"></i>
+                                 {!! Form::open(['route'=>'search','method'=>'GET']) !!}
+                                    {!! Form::text('search','', ['class'=>'form-control','placeholder'=>'Tìm kiếm..']) !!}
+                                    {!! Form::submit('Tìm kiếm', ['class'=>'btn btn-primary','style'=>'display:none;']) !!}
+                                 {!! Form::close() !!}
                               </div>
                            </div>
-                        </form>
-                        <ul class="ui-autocomplete ajax-results hidden"></ul>
+                        <ul class="list-group" id="result" ></ul>
                      </div>
                   </div>
                </div>

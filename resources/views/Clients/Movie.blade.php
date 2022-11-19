@@ -31,7 +31,7 @@
                         <img class="movie-thumb" src="{{asset('uploads/movie/'.$movie->image)}}" alt="GÓA PHỤ ĐEN">
                         <div class="bwa-content">
                            <div class="loader"></div>
-                           <a href="{{ route('watch') }}" class="bwac-btn">
+                           <a href="{{ url('xem-phim/'.$movie->slug.'/tap-'.$episode_tapdau->episode) }}" class="bwac-btn">
                            <i class="fa fa-play"></i>
                            </a>
                         </div>
@@ -40,19 +40,33 @@
                         <h1 class="movie-title title-1" style="display:block;line-height:35px;margin-bottom: -14px;color: #ffed4d;text-transform: uppercase;font-size: 18px;">{{$movie->title}}</h1>
                         <h2 class="movie-title title-2" style="font-size: 12px;"></h2>
                         <ul class="list-info-group">
-                           <li class="list-info-group-item"><span>Trạng Thái</span> : <span class="quality">@if($movie -> resolution )
+                           <li class="list-info-group-item"><span>Chất lượng</span> : <span class="quality">
+                              @if($movie -> resolution == 1)
                               SD
+                           @elseif($movie -> resolution == 0)
+                              HD
                            @else
-                                 HD
+                              Full HD
                            @endif
-                        </span><span class="episode">Vietsub</span></li>
-                           <li class="list-info-group-item"><span>Điểm IMDb</span> : <span class="imdb">7.2</span></li>
-                           <li class="list-info-group-item"><span>Thời lượng</span> : 133 Phút</li>
+                        </span>
+                           <li class="list-info-group-item"><span>Phụ đề</span> : <span class="episode">{{$movie->phude}}</span></li>
+                           <li class="list-info-group-item"><span>Thời lượng</span> : {{$movie->time}}</li>
+                           <li class="list-info-group-item"><span>Số tập</span> :
+                              @if($so==$movie->sotap)
+                              {{$so.'/'.$movie->sotap}} - Hoàn thành
+                              @else
+                                 {{$so.'/'.$movie->sotap}} - Đang tiến hành
+                              @endif
+                              </li>
+                           <li class="list-info-group-item"><span>Tập mới nhất</span> : 
+                              @foreach($episode as $key =>$ep)
+                              <a href="{{url('xem-phim/'.$ep->movie->slug.'/tap-'.$ep->episode)}}" rel="tag">Tập {{$ep->episode}}</a>
+                              @endforeach
+                           </li>
                            <li class="list-info-group-item"><span>Danh mục</span> : <a href="{{route('category', $movie->category->slug)}}" rel="tag">{{$movie->category->title}}</a></li>
                            <li class="list-info-group-item"><span>Thể loại</span> : <a href="{{route('genre', $movie->genre->slug)}}" rel="">{{$movie->genre->title}}</a></li>
                            <li class="list-info-group-item"><span>Quốc gia</span> : <a href="{{route('country', $movie->country->slug)}}" rel="tag">{{$movie->country->title}}</a></li>
-                           <li class="list-info-group-item"><span>Đạo diễn</span> : <a class="director" rel="nofollow" href="https://phimhay.co/dao-dien/cate-shortland" title="Cate Shortland">Cate Shortland</a></li>
-                           <li class="list-info-group-item last-item" style="-overflow: hidden;-display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-flex: 1;-webkit-box-orient: vertical;"><span>Diễn viên</span> :  </li>
+                           <li class="list-info-group-item"><span>Đạo diễn</span> : {{$movie->director}} </li>
                         </ul>
                         <div class="movie-trailer hidden"></div>
                      </div>
@@ -67,12 +81,8 @@
                <div class="entry-content htmlwrap clearfix">
                   <div class="video-item halim-entry-box">
                      <article id="post-38424" class="item-content">
-                        Phim <a href="">{{$movie->title}}</a> - 2021 - {{$movie->country->title}}:
+                        Phim <a href="">{{$movie->title}}</a> - {{$movie->country->title}}:
                         <p>{{$movie->description}}</p>
-                        <h5>Từ Khoá Tìm Kiếm:</h5>
-                        <ul>
-                           <li>black widow vietsub</li>
-                        </ul>
                      </article>
                   </div>
                </div>
@@ -89,7 +99,16 @@
                      <div class="halim-item">
                         <a class="halim-thumb" href="{{route('movie', $r->slug)}}" title="{{$r->title}}">
                            <figure><img class="lazy img-responsive" src="{{asset('uploads/movie/'.$r->image)}}" alt="" title="{{$r->title}}"></figure>
-                           <span class="status">HD</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> 
+                           <span class="status">
+                              @if($r -> resolution == 1)
+                                 SD
+                              @elseif($r -> resolution == 0)
+                                 HD
+                              @else
+                                 Full HD
+                              @endif
+                        </span>
+                        <span class="episode"><i class="fa fa-play" aria-hidden="true"></i>{{$r->phude}}</span> 
                            <div class="icon_overlay"></div>
                            <div class="halim-post-title-box">
                               <div class="halim-post-title ">
