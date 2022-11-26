@@ -8,7 +8,7 @@
       <meta content="VN" name="geo.region" />
       <meta name="DC.language" scheme="utf-8" content="vi" />
       <meta name="language" content="Việt Nam">
-      <link rel="shortcut icon" href="https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png" type="image/x-icon" />
+      <link rel="shortcut icon" href="{{ asset ("imgs/MOVIE.png") }}" type="image/x-icon" />
       <meta name="revisit-after" content="1 days" />
       <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
       <title>MovieZ - Xem phim hay nhất</title>
@@ -24,6 +24,9 @@
       <meta property="og:image:width" content="300" />
       <meta property="og:image:height" content="55" />
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
       <link rel='dns-prefetch' href='//s.w.org' />
       <link rel='stylesheet' id='bootstrap-css' href='{{ asset('css/bootstrap.min.css') }}' media='all' />
       <link rel='stylesheet' id='style-css' href='{{ asset('css/style.css') }}' media='all' />
@@ -36,30 +39,25 @@
          width: 100%;
          }
       </style>
-      <style>
-      #header .site-title {
-         background: url(https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png) 
-         no-repeat top left;
-         background-size: contain;
-         text-indent: -9999px;
-      }
-      </style>
    </head>
    <body class="home blog halimthemes halimmovies" data-masonry="">
       <header id="header">
          <div class="container">
             <div class="row" id="headwrap">
                <div class="col-md-3 col-sm-6 slogan">
-                  <p class="site-title"><a class="logo" href="{{route('homepage')}}" title="phim hay "></p>
+                  <p class="site-title">
+                     <a class="logo" href="{{route('homepage')}}" title="phim hay ">
+                        <img src="{{ asset("imgs/MOVIE.png") }}" alt="">
+                     </p>
                   </a>
                </div>
                <div class="col-md-5 col-sm-6 halim-search-form hidden-xs">
                   <div class="header-nav">
                      <div class="col-xs-12">
                            <div class="form-group form-timkiem">
-                              <div class="input-group col-xs-12">
+                              <div class=" input-group col-xs-12 ">
                               {!! Form::open(['route'=>'search','method'=>'GET']) !!}
-                                 {!! Form::text('search','', ['class'=>'form-control','placeholder'=>'Tìm kiếm..']) !!}
+                                 {!! Form::text('search','', ['class'=>'form-control ','placeholder'=>'Tìm kiếm..']) !!}
                                  {!! Form::submit('Tìm kiếm', ['class'=>'btn btn-primary','style'=>'display:none;']) !!}
                               {!! Form::close() !!}
                               </div>
@@ -70,7 +68,7 @@
                   </div>
                </div>
                <div class="col-md-4 hidden-xs">
-                  <div id="get-bookmark" class="box-shadow"><i class="hl-bookmark"></i><span> Bookmarks</span><span class="count">0</span></div>
+                  <div id="get-bookmark" class="box-shadow"><i class="fa-sharp fa-solid fa-bookmark"></i><span> Bookmarks</span><span class="count">0</span></div>
                   <div id="bookmark-list" class="hidden bookmark-list-on-pc">
                      <ul style="margin: 0;"></ul>
                   </div>
@@ -102,10 +100,11 @@
                <div class="collapse navbar-collapse" id="halim">
                   <div class="menu-menu_1-container">
                      <ul id="menu-menu_1" class="nav navbar-nav navbar-left">
-                        <li class="current-menu-item active"><a title="Trang Chủ" href="{{ route('homepage') }}">Trang Chủ</a></li>
+                        <li class="current-menu-item active"><a title="Trang Chủ" href="{{ route('homepage') }}
+                           ">Trang Chủ</a></li>
                         <li class="mega dropdown">
                            <a title="Thể Loại" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Thể Loại <span class="caret"></span></a>
-                           <ul role="menu" class=" dropdown-menu">
+                           <ul role="menu" class=" dropdown-menu" >
                               @foreach($genre as $key => $gen)
                                  <li><a title="{{$gen->title}}" href="{{ route('genre', $gen->slug) }}">{{$gen->title}}</a></li>
                               @endforeach
@@ -128,8 +127,8 @@
                         <li><a title="Phim Chiếu Rạp" href="danhmuc.php">Phim Chiếu Rạp</a></li> --}}
                      </ul>
                   </div>
-                  <ul class="nav navbar-nav navbar-left" style="background:#000;">
-                     <li><a href="#" onclick="locphim()" style="color: #ffed4d;">Lọc Phim</a></li>
+                  <ul class="nav navbar-nav navbar-left" >
+                     <li><a href="#" onclick="locphim()">Lọc Phim</a></li>
                   </ul>
                </div>
             </nav>
@@ -149,18 +148,100 @@
          @yield('content')
       </div>
       <div class="clearfix"></div>
-      <footer id="footer" class="clearfix">
-         <div class="container footer-columns">
-            <div class="row container">
-               <div class="widget about col-xs-12 col-sm-4 col-md-4">
-                  <div class="footer-logo">
-                     <img class="img-responsive" src="https://img.favpng.com/9/23/19/movie-logo-png-favpng-nRr1DmYq3SNYSLN8571CHQTEG.jpg" alt="Phim hay 2021- Xem phim hay nhất" />
-                  </div>
-                  Liên hệ QC: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e5958d8c888d849ccb868aa58288848c89cb868a88">[email&#160;protected]</a>
+      <footer class="text-center text-lg-start bg-light text-muted">
+         <!-- Section: Social media -->
+         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+           <!-- Left -->
+           <div class="me-5 d-none d-lg-block">
+             <span>Get connected with us on social networks:</span>
+           </div>
+           <!-- Left -->
+       
+           <!-- Right -->
+           
+           <!-- Right -->
+         </section>
+         <!-- Section: Social media -->
+       
+         <!-- Section: Links  -->
+         <section class="">
+           <div class="container text-center text-md-start mt-5">
+             <!-- Grid row -->
+             <div class="row mt-3">
+               <!-- Grid column -->
+               <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                 <!-- Content -->
+                 <h6 class="text-uppercase fw-bold mb-4">
+                    <img src="{{ asset("imgs/MOVIE.png") }}" alt="">
+                 </h6>
+                 <p>
+                   MovieZ - Trang web xem phim mới online fullHD Vietsub
+                 </p>
                </div>
-            </div>
-         </div>
-      </footer>
+               <!-- Grid column -->
+       
+               <!-- Grid column -->
+               <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                 <!-- Links -->
+                 <h5 class="text-uppercase fw-bold mb-4">
+                   Hỗ trợ và giúp đỡ
+                 </h5>
+                 <p>
+                   <a href="#!" class="text-reset">Phản ánh ý kiến   </a>
+                 </p>
+                 <p>
+                   <a href="#!" class="text-reset">Trung tâm phản hồi </a>
+                 </p>
+                 <p>
+                   <a href="#!" class="text-reset">Câu hỏi thường gặp</a>
+                 </p>
+               </div>
+               <!-- Grid column -->
+       
+               <!-- Grid column -->
+               <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                 <!-- Links -->
+                 <h5 class="text-uppercase fw-bold mb-4">
+                   Điều khoản
+                 </h5>
+                 <p>
+                   <a href="#!" class="text-reset">Điều khoản và quyền riêng tư</a>
+                 </p>
+                 <p>
+                   <a href="#!" class="text-reset">Điều khoản sử dụng</a>
+                 </p>
+               </div>
+               <!-- Grid column -->
+       
+               <!-- Grid column -->
+               <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                 <!-- Links -->
+                 <h5 class="text-uppercase fw-bold mb-4">Contact</h5>
+                 <p><i class="fas fa-home me-3"></i> Đà Nẵng</p>
+                 <p>
+                   <i class="fas fa-envelope me-3"></i>
+                   phuquoc@gmail.com
+                 </p>
+                 <div>
+                  <a href="" class="me-4 text-reset">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </div>
+               </div>
+               <!-- Grid column -->
+             </div>
+             <!-- Grid row -->
+           </div>
+         </section>
+         <!-- Section: Links  -->
+       </footer>
+       <!-- Footer -->
       <div id='easy-top'></div>
       <script type='text/javascript' src='{{ asset('js/bootstrap.min.js') }}' id='bootstrap-js'></script>
       <script type='text/javascript' src='{{ asset('js/owl.carousel.min.js') }}' id='carousel-js'></script>
