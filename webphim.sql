@@ -11,7 +11,7 @@
  Target Server Version : 100424
  File Encoding         : 65001
 
- Date: 19/11/2022 09:50:22
+ Date: 26/11/2022 10:26:49
 */
 
 SET NAMES utf8mb4;
@@ -69,7 +69,7 @@ CREATE TABLE `episodes`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_movie`(`movie_id` ASC) USING BTREE,
   CONSTRAINT `fk_movie` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of episodes
@@ -87,6 +87,9 @@ INSERT INTO `episodes` VALUES (15, 19, '<iframe width=\"560\" height=\"315\" src
 INSERT INTO `episodes` VALUES (16, 19, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/WRvkgaSL0bk\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 6);
 INSERT INTO `episodes` VALUES (17, 26, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/URP_5tC1XRM\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 1);
 INSERT INTO `episodes` VALUES (18, 23, '<iframe src=\"https://drive.google.com/file/d/1sXofM-ca4i9nnC2kesQL7JMg5oDORxaP/preview\" width=\"640\" height=\"480\" allow=\"autoplay\" allowfullscreen></iframe>', 2);
+INSERT INTO `episodes` VALUES (19, 19, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/64ILe3b7Q6k\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 7);
+INSERT INTO `episodes` VALUES (20, 19, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/OcqBYYJzeDM\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 8);
+INSERT INTO `episodes` VALUES (21, 19, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/m4x6Ud2KRkc\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 9);
 
 -- ----------------------------
 -- Table structure for failed_jobs
@@ -119,7 +122,7 @@ CREATE TABLE `genres`  (
   `status` int NULL DEFAULT NULL,
   `slug` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of genres
@@ -128,6 +131,7 @@ INSERT INTO `genres` VALUES (3, 'Drama', 'Drama', 1, 'drama');
 INSERT INTO `genres` VALUES (4, 'Tình cảm', 'Tình cảm', 1, 'tinh-cam');
 INSERT INTO `genres` VALUES (5, 'Học đường', 'Học Đường', 1, 'hoc-duong');
 INSERT INTO `genres` VALUES (7, 'Siêu nhiên', 'Siêu nhiên', 1, 'sieu-nhien');
+INSERT INTO `genres` VALUES (8, 'Lãng mạn', 'Lãng mạn', 1, 'lang-man');
 
 -- ----------------------------
 -- Table structure for migrations
@@ -177,19 +181,19 @@ CREATE TABLE `movies`  (
   CONSTRAINT `fk_catgory` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_country` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_genre` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of movies
 -- ----------------------------
-INSERT INTO `movies` VALUES (16, 'Your Name', 'Your Name – Tên cậu là gì? là một bộ phim điện ảnh hoạt hình Nhật Bản thuộc thể loại tình cảm lãng mạn, kỳ ảo, chính kịch do Shinkai Makoto làm đạo diễn. Phim do hãng CoMix Wave Films sản xuất và Toho phát hành', 1, 'Your_Name_novel.jpg', 8, 4, 1, 'your-name', 1, 2, '120 Phút', 'Shinkai Makoto', '2022-11-16 18:16:39', '2022-11-18 22:09:31', 'Vietsub', 1);
-INSERT INTO `movies` VALUES (19, 'Takt Op Destiny', 'Một trò chơi nhập vai có tựa đề takt op. Unmei wa Shinkuki Senritsu no Machi o phát triển bởi Game Studio dự kiến phát hành trên điện thoại vào năm 2022. Một bản anime truyền hình có tên takt op. Destiny do MAPPA hợp tác sản xuất cùng Madhouse được lên sóng từ ngày 6 tháng 10 năm 2021.', 1, 'images.jfif', 4, 3, 1, 'takt-op-destiny', 1, 2, '24 Phút', 'Itou Yuuki', '2022-11-16 18:16:33', '2022-11-19 01:01:01', 'Vietsub/Thuyết minh', 13);
+INSERT INTO `movies` VALUES (16, 'Your Name', 'Bộ phim là câu chuyện hoán đổi cơ thể của 2 cô cậu Mitsuha - nữ sinh trung học sống ở một thị trấn nhỏ của vùng Itomori và Taki – nam sinh tại thủ đô Tokyo đầy sôi động.Mitsuha luôn chán chường với cuộc sống tẻ nhạt của mình và mơ ước được làm anh chàng đẹp trai sống tại thủ đô. Trong khi đó, Taki hằng đêm lại nhìn thấy mình trong hình hài cô gái vùng miền quê. Ước mơ của cả 2 đã thành sự thật khi sao chổi nghìn năm xuất hiện trên trái đất và rồi cứ cách ngày lại được hoán đổi cơ thể cho nhau.', 1, 'Your_Name_novel.jpg', 8, 4, 1, 'your-name', 1, 2, '106 Phút', 'Shinkai Makoto', '2022-11-16 18:16:39', '2022-11-20 13:11:15', 'Vietsub', 1);
+INSERT INTO `movies` VALUES (19, 'Takt Op Destiny', 'Một trò chơi nhập vai có tựa đề takt op. Unmei wa Shinkuki Senritsu no Machi o phát triển bởi Game Studio dự kiến phát hành trên điện thoại vào năm 2022. Một bản anime truyền hình có tên takt op. Destiny do MAPPA hợp tác sản xuất cùng Madhouse được lên sóng từ ngày 6 tháng 10 năm 2021.', 1, 'images.jfif', 4, 3, 1, 'takt-op-destiny', 1, 2, '24 Phút', 'Itou Yuuki', '2022-11-16 18:16:33', '2022-11-25 13:16:35', 'Vietsub/Thuyết minh', 13);
 INSERT INTO `movies` VALUES (20, 'Khu vườn ngôn từ', NULL, 1, 'download (1).jfif', 1, 3, 1, 'khu-vuon-ngon-tu', 1, 0, '60 Phút', 'Shinkai Makoto', '2022-11-16 18:16:27', '2022-11-18 14:06:08', 'Vietsub', 1);
 INSERT INTO `movies` VALUES (21, 'Charlotte', 'Charlotte là một bộ anime truyền hình Nhật Bản được sản xuất bởi P.A.Works và Aniplex, do Asai Yoshiyuki làm đạo diễn. Cốt truyện được sáng tác bởi Maeda Jun với các bản vẽ nhân vật chính gốc được thiết kế bởi Na-Ga.', 1, 'download (2).jfif', 4, 7, 1, 'charlotte', 1, 2, '25 Phút', NULL, '2022-11-16 18:16:20', '2022-11-18 14:07:33', 'Vietsub', 1);
 INSERT INTO `movies` VALUES (22, 'Tenki no ko', 'Đứa con của thời tiết là phim hoạt hình Nhật Bản thuộc thể loại kỳ ảo lãng mạn, tâm lý, và là phim anime điện ảnh thứ bảy do Shinkai Makoto đạo diễn kiêm biên kịch, được CoMix Wave Films sản xuất và Toho phát hành. Đối với phim trước đó là Your Name – Tên cậu là gì? ra mắt năm 2016.', 1, 'download.jfif', 1, 4, 1, 'tenki-no-ko', 1, 2, '120 Phút', 'Shinkai Makoto', '2022-11-16 18:17:29', '2022-11-18 14:06:21', 'Vietsub', 1);
 INSERT INTO `movies` VALUES (23, 'Spy x Family', 'SPY×FAMILY là một bộ manga Nhật Bản được viết và minh họa bởi Endo Tatsuya. Bộ truyện được đăng tải mỗi 2 tuần trên tạp chí trực tuyến Shōnen Jump+ kể từ ngày 25 tháng 3 năm 2019. Tính đến nay, đã có tổng cộng 10 tập tankōbon được phát hành bởi Shueisha.', 1, 'd4ppmz00_660x946-spyxfamily-demoa2731c005ce704ec40c7ff515b2b1afb.jpg', 4, 3, 1, 'spy-x-family', 1, 0, '24 Phút', 'Endo Tatsuya', '2022-11-16 18:15:48', '2022-11-18 14:20:47', 'Vietsub', 12);
 INSERT INTO `movies` VALUES (24, 'Những đứa trẻ đuổi theo tinh tú', '\'Những đứa trẻ đuổi theo tinh tú\', còn được biết đến với tên Journey to Agartha, Children Who Chase Voices From Deep Below là một phim anime của Nhật, phát hành ngày 07 tháng 05 năm 2011, đạo diễn bởi Shinkai Makoto. Đây là phim dài nhất của Shinkai Makoto tính đến thời điểm hiện tại.', 1, 'download (3).jfif', 8, 3, 1, 'nhung-dua-tre-duoi-theo-tinh-tu', 1, 0, '120 Phút', 'Shinkai Makoto', '2022-11-18 22:10:24', '2022-11-18 22:10:24', 'Vietsub', 1);
-INSERT INTO `movies` VALUES (25, 'MAQUIA: When the Promised Flower Blooms', 'Sayonara no Asa ni Yakusoku no Hana o Kazarō, gọi tắt là Sayoasa, là một phim anime điện ảnh năm 2018 được viết và đạo diễn bởi Okada Mari và được P.A.Works sản xuất. Ishii Yuriko phụ trách phần thiết kế nhân vật được lấy hình dáng của hình mẫu cũ do Yoshida Akihiko thiết kế và phần âm thanh bởi Kawai Kenji.', 1, 'download (4).jfif', 8, 4, 1, 'maquia-when-the-promised-flower-blooms', 1, 0, '115 Phút', 'Okada Mari', '2022-11-18 22:18:19', '2022-11-18 22:31:34', 'Vietsub', 1);
+INSERT INTO `movies` VALUES (25, 'MAQUIA: When the Promised Flower Blooms', 'Maquia: Chờ Ngày Lời Hứa Nở Hoa – Phim lấy bối cảnh thơ mộng của vùng đất huyền diệu nơi tộc người Lorph “trường sinh bất lão” sinh sống, tộc người Lorph sẽ mãi mãi không già, hình dáng của họ ngưng lại ở độ tuổi thiếu niên, họ được gọi với cái tên huyền thoại sống – “Clan of Partings”. Sau một cuộc xâm lăng, cô bé Maquia bị lạc vào vùng đất của con người và bắt gặp một đứa trẻ mồ côi. Từ đó cô quyết định sẽ nuôi nấng em bé mà cô đặt tên là Ariel này bất kể những khó khăn và định kiến của xã hội.', 1, 'download (4).jfif', 8, 4, 1, 'maquia-when-the-promised-flower-blooms', 1, 0, '115 Phút', 'Okada Mari', '2022-11-18 22:18:19', '2022-11-25 15:48:46', 'Vietsub', 1);
 INSERT INTO `movies` VALUES (26, '5 cm/s', '5 Centimet trên giây là một phim anime do Shinkai Makoto đạo diễn và hãng CoMix Wave thực hiện. Bộ phim được công chiếu lần đầu vào ngày 03 tháng 3 năm 2007 tại rạp ở Shibuya, Tokyo.', 1, 'Byousoku_5_Centimeter_DVD_cover.jpg', 8, 4, 1, '5-cms', 1, 0, '62 Phút', 'Shinkai Makoto', '2022-11-19 09:36:24', '2022-11-19 09:36:24', 'Vietsub', 1);
 
 -- ----------------------------
@@ -253,6 +257,6 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'wako', 'hoangthithuynga7071@gmail.com', NULL, '$2y$10$6mv6MlybhX/KMgLYlg3CwelHqoIoa14n07.6P8fIck5CfPkdUYI6.', 'j17iVQAn891tczjzrHc71LxOVkY4cdngu2sB3aqJcyQS7XP0GEFv9yv0nEMf', '2022-10-28 07:04:51', '2022-10-28 07:04:51', 1);
+INSERT INTO `users` VALUES (1, 'wako', 'hoangthithuynga7071@gmail.com', NULL, '$2y$10$6mv6MlybhX/KMgLYlg3CwelHqoIoa14n07.6P8fIck5CfPkdUYI6.', 'sxHPriSC0M2Sl9mGzqbNz0y2gUKs6m3LwaFXJ9qJz6Ksucd3daZ7wk7dd616', '2022-10-28 07:04:51', '2022-10-28 07:04:51', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -319,7 +319,7 @@
                         ><img src="images/2.jpg" alt="" />
                         </span>
                         <div class="user-name">
-                        <p>Admin Name</p>
+                        <p>Name admin</p>
                         <span>Administrator</span>
                         </div>
                         <i class="fa fa-angle-down lnr"></i>
@@ -360,46 +360,46 @@
             <div class="col_3">
                 <div class="col-md-3 widget widget1">
                 <div class="r3_counter_box">
-                    <i class="pull-left fa fa-dollar icon-rounded"></i>
+                    <i class="pull-left fa fa-file icon-rounded"></i>
                     <div class="stats">
-                    <h5><strong>$452</strong></h5>
-                    <span>Total Revenue</span>
+                    <h5><strong>{{$category_total}}</strong></h5>
+                    <span>Danh mục</span>
                     </div>
                 </div>
                 </div>
                 <div class="col-md-3 widget widget1">
                 <div class="r3_counter_box">
-                    <i class="pull-left fa fa-laptop user1 icon-rounded"></i>
+                    <i class="pull-left fa fa-child user1 icon-rounded"></i>
                     <div class="stats">
-                    <h5><strong>$1019</strong></h5>
-                    <span>Online Revenue</span>
+                    <h5><strong>{{$genre_total}}</strong></h5>
+                    <span>Thể loại</span>
                     </div>
                 </div>
                 </div>
                 <div class="col-md-3 widget widget1">
                 <div class="r3_counter_box">
-                    <i class="pull-left fa fa-money user2 icon-rounded"></i>
+                    <i class="pull-left fa fa-globe user2 icon-rounded"></i>
                     <div class="stats">
-                    <h5><strong>$1012</strong></h5>
-                    <span>Expenses</span>
+                    <h5><strong>{{$country_total}}</strong></h5>
+                    <span>Quốc gia</span>
                     </div>
                 </div>
                 </div>
                 <div class="col-md-3 widget widget1">
                 <div class="r3_counter_box">
-                    <i class="pull-left fa fa-pie-chart dollar1 icon-rounded"></i>
+                    <i class="pull-left fa fa-film dollar1 icon-rounded"></i>
                     <div class="stats">
-                    <h5><strong>$450</strong></h5>
-                    <span>Expenditure</span>
+                    <h5><strong>{{$movie_total}}</strong></h5>
+                    <span>Phim</span>
                     </div>
                 </div>
                 </div>
                 <div class="col-md-3 widget">
                 <div class="r3_counter_box">
-                    <i class="pull-left fa fa-users dollar2 icon-rounded"></i>
+                    <i class="pull-left fa fa-laptop dollar2 icon-rounded"></i>
                     <div class="stats">
-                    <h5><strong>1450</strong></h5>
-                    <span>Total Users</span>
+                    <h5><strong>{{$episode_total}}</strong></h5>
+                    <span>Tập phim</span>
                     </div>
                 </div>
                 </div>
@@ -429,7 +429,7 @@
     </div>
 </div>
         @else
-            @yield(content_login)
+            @yield('content_login')
         {{-- <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
