@@ -29,26 +29,7 @@
       <link rel='stylesheet' id='style-css' href='{{ asset('css/style.css') }}' media='all' />
       <link rel='stylesheet' id='wp-block-library-css' href='{{ asset('css/style.min.css') }}' media='all' />
       <script type='text/javascript' src='{{ asset('js/jquery.min.js') }}' id='halim-jquery-js'></script>
-      <script type='text/javascript'>
-         $(document).ready(function()
-         {
-            $('#timkiem').keyup(function()
-            {
-               $('#result').html('');
-               var search = $('#timkiem').val();
-               if(search!''){
-                  var exp = new RegExp(search,"i");
-                  $.getJSON('/json/movies.json', function(data){
-                     $.each(data, function(key, value){
-                        if (value.title.search(exp) != -1) {
-                           $('#result').append('<li style="cursor:pointer;" class="list-group-item">phim da tim</li>');
-                        }
-                     });
-                  })
-               }
-            })
-         })
-      </script>
+      
       
       <style type="text/css" id="wp-custom-css">
          .textwidget p a img {
@@ -75,26 +56,16 @@
                <div class="col-md-5 col-sm-6 halim-search-form hidden-xs">
                   <div class="header-nav">
                      <div class="col-xs-12">
-                        <style type="text/css">
-                           /* ul#result 
-                           {
-                              position: absolute;
-                              z-index:9999;
-                              background: #1b2d3c;
-                              width: 94%;
-                              padding:10px;
-                              margin:1px;
-                           } */
-                        </style>
                            <div class="form-group form-timkiem">
                               <div class="input-group col-xs-12">
-                                 {!! Form::open(['route'=>'search','method'=>'GET']) !!}
-                                    {!! Form::text('search','', ['class'=>'form-control','placeholder'=>'Tìm kiếm..']) !!}
-                                    {!! Form::submit('Tìm kiếm', ['class'=>'btn btn-primary','style'=>'display:none;']) !!}
-                                 {!! Form::close() !!}
+                              {!! Form::open(['route'=>'search','method'=>'GET']) !!}
+                                 {!! Form::text('search','', ['class'=>'form-control','placeholder'=>'Tìm kiếm..']) !!}
+                                 {!! Form::submit('Tìm kiếm', ['class'=>'btn btn-primary','style'=>'display:none;']) !!}
+                              {!! Form::close() !!}
                               </div>
+                              <ul class="list-group" id="result" style="display: none;"></ul>
                            </div>
-                        <ul class="list-group" id="result" ></ul>
+                        
                      </div>
                   </div>
                </div>
@@ -266,10 +237,31 @@
          span.bannermobi2 img {height: 70px;width: 300px;}
          #hide_float_right a { background: #01AEF0; padding: 5px 5px 1px 5px; color: #FFF;float: left;}
       </style>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
       <script>
          $(document).ready(function($) {				
          var owl = $('#halim_related_movies-2');
          owl.owlCarousel({loop: true,margin: 4,autoplay: true,autoplayTimeout: 4000,autoplayHoverPause: true,nav: true,navText: ['<i class="hl-down-open rotate-left"></i>', '<i class="hl-down-open rotate-right"></i>'],responsiveClass: true,responsive: {0: {items:2},480: {items:3}, 600: {items:4},1000: {items: 4}}})});
+      </script>
+      <script type='text/javascript'>
+         $(document).ready(function()
+         {
+            $('#timkiem').keyup(function()
+            {
+               $('#result').html('');
+               var search = $('#timkiem').val();
+               if(search!=''){
+                  var exp = new RegExp(search);
+                  $.getJSON("/json/movies.json", function(data){
+                     $.each(data, function(key, value){
+                        if (value.title.search(exp) != -1) {
+                           $('#result').append('<li style="cursor:pointer;" class="list-group-item">phim da tim</li>');
+                        }
+                     });
+                  })
+               }
+            })
+         })
       </script>
    </body>
 </html>

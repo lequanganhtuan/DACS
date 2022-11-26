@@ -64,7 +64,7 @@
                </div>
             </a>
             <div class="title-wrapper-xem full">
-               <h1 class="entry-title"><a href="" title="Tôi Và Chúng Ta Ở Bên Nhau" class="tl">{{$movie->title}}</a></h1>
+               <h1 class="entry-title"><a href="{{route('movie', $movie->slug)}}" title="{{$movie->title}}" class="tl">{{$movie->title}}</a></h1>
             </div>
          </div>
          <div class="entry-content htmlwrap clearfix collapse" id="expand-post-content">

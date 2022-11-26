@@ -14,7 +14,8 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
+        $list = Country::all();
+        return view('admincp.country.index', compact('list'));
     }
 
     /**

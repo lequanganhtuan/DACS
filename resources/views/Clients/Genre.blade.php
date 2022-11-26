@@ -25,7 +25,15 @@
                   <div class="halim-item">
                      <a class="halim-thumb" href="{{route('movie', $home->slug)}}" title="{{$home->title}}">
                         <figure><img class="lazy img-responsive" src="{{asset('uploads/movie/'.$home->image)}}" alt="" title="{{$home->title}}"></figure>
-                        <span class="status">5/5</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> 
+                        <span class="status">
+                           @if($home -> resolution == 1)
+                              SD
+                           @elseif($home -> resolution == 0)
+                              HD
+                           @else
+                              Full HD
+                           @endif
+                     </span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>{{$home->phude}}</span> 
                         <div class="icon_overlay"></div>
                         <div class="halim-post-title-box">
                            <div class="halim-post-title ">

@@ -66,6 +66,7 @@
                                         Full HD
                                 @endif
                             </td>
+                            <td>{{$cate -> phude}}</td>
                             <td>{{$cate -> ngaytao}}</td>
                             <td>{{$cate -> ngaycapnhat}}</td>
                             <td>

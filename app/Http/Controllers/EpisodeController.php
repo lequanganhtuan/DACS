@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Episode;
 use App\Models\Movie;
+use Carbon\Carbon;
 
 class EpisodeController extends Controller
 {
@@ -41,10 +42,21 @@ class EpisodeController extends Controller
     {
         $data = $request->all();
         $episode =  new Episode();
-        $episode -> movie_id = $data['movie_id'];
-        $episode -> linkphim = $data['linkphim'];
-        $episode -> episode = $data['episode'];
-        $episode->save();
+        $check = Episode::where('episode', $data['episode'])->where('movie_id', $data['movie_id'])->count();
+        if ($check > 0 ) {
+            
+            return redirect()->back();
+        }
+        else
+        {   
+            $episode -> movie_id = $data['movie_id'];
+            $episode -> linkphim = $data['linkphim'];
+            $episode -> episode = $data['episode'];
+            $movie = Movie::find($data['movie_id']);
+            $movie->ngaycapnhat = Carbon::now('Asia/Ho_Chi_Minh');
+            $movie->save();
+            $episode->save();
+        }
         return redirect()->back();
     }
 
@@ -87,6 +99,8 @@ class EpisodeController extends Controller
         $episode -> movie_id = $data['movie_id'];
         $episode -> linkphim = $data['linkphim'];
         $episode -> episode = $data['episode'];
+        $movie->ngaycapnhat = Carbon::now('Asia/Ho_Chi_Minh');
+        $movie->save();
         $episode->save();
         return redirect()->back();
     }
@@ -106,12 +120,15 @@ class EpisodeController extends Controller
     {
         $id = $_GET['id'];
         $movie_by_id = Movie::find($id);
+        $episode = Episode::where('movie_id', $movie_by_id->id)->first();
         $output ='<option value="">---Chọn tập phim---</option>';
         for ($i=1;$i<=$movie_by_id->sotap;$i++)
         {
+            
             $output .='<option value="'.$i.'">'.$i.'</option>';
 
         }
         echo $output;
     }
+    
 }

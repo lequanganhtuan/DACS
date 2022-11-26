@@ -52,6 +52,7 @@ class IndexController extends Controller
         $country = Country::orderBy('id','DESC')->get();
         $cate_slug = Category::where('slug',$slug)->first();
         $movie = Movie::where('category_id', $cate_slug->id)->paginate(40);
+        // $so = Episode::with('movie')->where('movie_id',$movie->id)->count();
         return view('Clients.Category', compact('category', 'genre', 'country', 'cate_slug','movie','top'));
     }
     public function genre($slug){
