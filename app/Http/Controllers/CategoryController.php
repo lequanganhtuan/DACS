@@ -37,13 +37,30 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        // $data = $request->all();
+        $data = $request->validate(
+            [
+                'title' => 'required|unique:categories|max:255',
+                'slug' => 'required|unique:categories|max:255',
+                'description' => 'required',
+                'status'=>'required'
+            ],
+            [
+                'title.unique' => 'Tên danh mục đã tồn tại vui lòng nhập tên mới',
+                'title.required' => 'Vui lòng nhập tên danh mục',
+                'slug.unique' => 'Slug đã tồn tại vui lòng nhập slug mới',
+                'slug.required' => 'Vui lòng nhập slug danh mục',
+                'description.required' => 'Vui lòng nhập tên danh mục',
+
+            ]
+        );
         $category = new Category();
         $category -> title =  $data['title'];
         $category -> slug =  $data['slug'];
         $category -> description = $data['description'];
         $category -> status =  $data['status'];
         $category ->save();
+        toastr() ->success('Thành công','Thêm danh mục phim thành công');
         return redirect()->back();
     }
 
@@ -80,13 +97,29 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
+        $data = $request->validate(
+            [
+                'title' => 'required|unique:categories|max:255',
+                'slug' => 'required|unique:categories|max:255',
+                'description' => 'required',
+                'status'=>'required'
+            ],
+            [
+                'title.unique' => 'Tên danh mục đã tồn tại vui lòng nhập tên mới',
+                'title.required' => 'Vui lòng nhập tên danh mục',
+                'slug.unique' => 'Slug đã tồn tại vui lòng nhập slug mới',
+                'slug.required' => 'Vui lòng nhập slug danh mục',
+                'description.required' => 'Vui lòng nhập tên danh mục',
+
+            ]
+        );
         $category =Category::find($id);
         $category -> title =  $data['title'];
         $category -> slug =  $data['slug'];
         $category -> description = $data['description'];
         $category -> status =  $data['status'];
         $category ->save();
+        toastr() ->success('Thành công','Cập nhật danh mục phim thành công');
         return redirect()->back();
     }
 

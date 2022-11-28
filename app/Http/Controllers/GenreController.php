@@ -37,13 +37,29 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validate(
+            [
+                'title' => 'required|unique:genres|max:255',
+                'slug' => 'required|unique:genres|max:255',
+                'description' => 'required',
+                'status'=>'required'
+            ],
+            [
+                'title.unique' => 'Tên thể loại đã tồn tại vui lòng nhập tên mới',
+                'title.required' => 'Vui lòng nhập tên thể loại',
+                'slug.unique' => 'Slug đã tồn tại vui lòng nhập slug mới',
+                'slug.required' => 'Vui lòng nhập slug',
+                'description.required' => 'Vui lòng nhập mô tả',
+
+            ]
+        );
         $genre = new Genre();
         $genre -> title =  $data['title'];
         $genre -> slug =  $data['slug'];
         $genre -> description = $data['description'];
         $genre -> status =  $data['status'];
         $genre ->save();
+        toastr()->success('Thành công','Thêm thể loại thành công');
         return redirect()->back();
     }
 
@@ -80,13 +96,29 @@ class GenreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
+        $data = $request->validate(
+            [
+                'title' => 'required|unique:genres|max:255',
+                'slug' => 'required|unique:genres|max:255',
+                'description' => 'required',
+                'status'=>'required'
+            ],
+            [
+                'title.unique' => 'Tên thể loại đã tồn tại vui lòng nhập tên mới',
+                'title.required' => 'Vui lòng nhập tên thể loại',
+                'slug.unique' => 'Slug đã tồn tại vui lòng nhập slug mới',
+                'slug.required' => 'Vui lòng nhập slug',
+                'description.required' => 'Vui lòng nhập mô tả',
+
+            ]
+        );
         $genre =Genre::find($id);
         $genre -> title =  $data['title'];
         $genre -> slug =  $data['slug'];
         $genre -> description = $data['description'];
         $genre -> status =  $data['status'];
         $genre ->save();
+        toastr()->success('Thành công','Cập nhật thể loại thành công');
         return redirect()->back();
     }
 

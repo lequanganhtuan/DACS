@@ -28,7 +28,7 @@ Route::get('/xem-phim/{slug}/{tap}', [IndexController::class, 'watch']);
 Route::get('/so-tap', [IndexController::class, 'episode'])->name('so-tap');
 Route::get('/tim-kiem', [IndexController::class, 'search'])->name('search');
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 

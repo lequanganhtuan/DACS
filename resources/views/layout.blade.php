@@ -220,7 +220,7 @@
                  <p><i class="fas fa-home me-3"></i> Đà Nẵng</p>
                  <p>
                    <i class="fas fa-envelope me-3"></i>
-                   phuquoc@gmail.com
+                   tuanmatl@gmail.com
                  </p>
                  <div>
                   <a href="" class="me-4 text-reset">

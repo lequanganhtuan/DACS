@@ -1,5 +1,4 @@
 @extends('layouts.layout_login')
-
 @section('content_login')
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
@@ -46,8 +45,6 @@
                         <div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-
- 
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                             @error('password')

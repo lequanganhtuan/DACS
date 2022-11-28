@@ -2,7 +2,7 @@
     <div id="halim_tab_popular_videos-widget-7" class="widget halim_tab_popular_videos-widget">
         <div class="section-bar clearfix">
             <div class="section-title">
-                <span>Top Views</span>
+                <span>Quan tâm nhiều nhất</span>
         </div>
         <section class="tab-content">
             <div role="tabpanel" class="tab-pane active halim-ajax-popular-post">

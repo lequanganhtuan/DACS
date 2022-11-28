@@ -124,312 +124,310 @@
 
     <body class="cbp-spmenu-push">
         @if(Auth::check())
-        <div class="main-content">
-        <div
-            class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left"
-            id="cbp-spmenu-s1"
-        >
-            <!--left-fixed -navigation-->
-            <aside class="sidebar-left">
-            <nav class="navbar navbar-inverse">
-                <div class="navbar-header">
-                <button
-                    type="button"
-                    class="navbar-toggle collapsed"
-                    data-toggle="collapse"
-                    data-target=".collapse"
-                    aria-expanded="false"
-                >
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <h1>
-                    <a class="navbar-brand" href="{{url('/home')}}"
-                    ><span class="fa fa-area-chart"></span> Glance<span
-                        class="dashboard_text"
-                        >Design dashboard</span
-                    ></a
-                    >
-                </h1>
-                </div>
+                <div class="main-content">
                 <div
-                class="collapse navbar-collapse"
-                id="bs-example-navbar-collapse-1"
+                    class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left"
+                    id="cbp-spmenu-s1"
                 >
-                <ul class="sidebar-menu">
-                    <li class="header">MAIN NAVIGATION</li>
-                    <li class="treeview">
-                    <a href="{{url('/home')}}">
-                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                    </a>
-                    </li>
-                    @php
-                        $segment = Request::segment(1);
-                    @endphp
-                    <li class="treeview {{($segment == 'category') ? 'active' : ''}}">
-                    <a href="#">
-                        <i class="fa fa-file"></i>
-                        <span>Danh mục phim</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li>
-                        <a href="{{route('category.create')}}"
-                            ><i class="fa fa-angle-right"></i>Thêm danh mục</a
+                    <!--left-fixed -navigation-->
+                    <aside class="sidebar-left">
+                    <nav class="navbar navbar-inverse">
+                        <div class="navbar-header">
+                        <button
+                            type="button"
+                            class="navbar-toggle collapsed"
+                            data-toggle="collapse"
+                            data-target=".collapse"
+                            aria-expanded="false"
                         >
-                        </li>
-                        <li>
-                        <a href="{{route('category.index')}}"
-                            ><i class="fa fa-angle-right"></i> Liệt kê danh mục</a
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <h1>
+                            <a class="navbar" href="{{url('/home')}}"
+                            ><img src="{{ asset("imgs/MOVIE.png") }}" alt="" style="left: 0px"></a
+                            >
+                        </h1>
+                        </div>
+                        <div
+                        class="collapse navbar-collapse"
+                        id="bs-example-navbar-collapse-1"
                         >
-                        </li>
-                    </ul>
-                    </li>
-                    <li class="treeview {{($segment == 'genre') ? 'active' : ''}}">
-                        <a href="#">
-                            <i class="fa fa-child"></i>
-                            <span>Thể loại phim</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li>
-                            <a href="{{route('genre.create')}}"
-                                ><i class="fa fa-angle-right"></i>Thêm thể loại</a
-                            >
+                        <ul class="sidebar-menu">
+                            <li class="header">MAIN NAVIGATION</li>
+                            <li class="treeview">
+                            <a href="{{url('/home')}}">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            </a>
                             </li>
-                            <li>
-                            <a href="{{route('genre.index')}}"
-                                ><i class="fa fa-angle-right"></i> Liệt kê thể loại</a
-                            >
-                            </li>
-                        </ul>
-                        </li>
-                        <li class="treeview {{($segment == 'country') ? 'active' : ''}}">
+                            @php
+                                $segment = Request::segment(1);
+                            @endphp
+                            <li class="treeview {{($segment == 'category') ? 'active' : ''}}">
                             <a href="#">
-                                <i class="fa fa-globe"></i>
-                                <span>Quốc gia</span>
+                                <i class="fa fa-file"></i>
+                                <span>Danh mục phim</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
                                 <li>
-                                <a href="{{route('country.create')}}"
-                                    ><i class="fa fa-angle-right"></i>Thêm quốc gia</a
+                                <a href="{{route('category.create')}}"
+                                    ><i class="fa fa-angle-right"></i>Thêm danh mục</a
                                 >
                                 </li>
                                 <li>
-                                <a href="{{route('country.index')}}"
-                                    ><i class="fa fa-angle-right"></i> Liệt kê quốc gia</a
+                                <a href="{{route('category.index')}}"
+                                    ><i class="fa fa-angle-right"></i> Liệt kê danh mục</a
                                 >
                                 </li>
                             </ul>
                             </li>
-                            <li class="treeview {{($segment == 'movie') ? 'active' : ''}}">
+                            <li class="treeview {{($segment == 'genre') ? 'active' : ''}}">
                                 <a href="#">
-                                    <i class="fa fa-film"></i>
-                                    <span>Phim</span>
+                                    <i class="fa fa-child"></i>
+                                    <span>Thể loại phim</span>
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </a>
                                 <ul class="treeview-menu">
                                     <li>
-                                    <a href="{{route('movie.create')}}"
-                                        ><i class="fa fa-angle-right"></i>Thêm phim</a
+                                    <a href="{{route('genre.create')}}"
+                                        ><i class="fa fa-angle-right"></i>Thêm thể loại</a
                                     >
                                     </li>
                                     <li>
-                                    <a href="{{route('movie.index')}}"
-                                        ><i class="fa fa-angle-right"></i> Liệt kê tập phim</a
+                                    <a href="{{route('genre.index')}}"
+                                        ><i class="fa fa-angle-right"></i> Liệt kê thể loại</a
                                     >
                                     </li>
                                 </ul>
                                 </li>
-                                <li class="treeview {{($segment == 'episode') ? 'active' : ''}}">
+                                <li class="treeview {{($segment == 'country') ? 'active' : ''}}">
                                     <a href="#">
-                                        <i class="fa fa-laptop"></i>
-                                        <span>Tập phim</span>
+                                        <i class="fa fa-globe"></i>
+                                        <span>Quốc gia</span>
                                         <i class="fa fa-angle-left pull-right"></i>
                                     </a>
                                     <ul class="treeview-menu">
                                         <li>
-                                        <a href="{{route('episode.create')}}"
-                                            ><i class="fa fa-angle-right"></i>Thêm tập phim</a
+                                        <a href="{{route('country.create')}}"
+                                            ><i class="fa fa-angle-right"></i>Thêm quốc gia</a
                                         >
                                         </li>
                                         <li>
-                                        <a href="{{route('episode.index')}}"
-                                            ><i class="fa fa-angle-right"></i> Liệt kê tập phim</a
+                                        <a href="{{route('country.index')}}"
+                                            ><i class="fa fa-angle-right"></i> Liệt kê quốc gia</a
                                         >
                                         </li>
                                     </ul>
                                     </li>
-                </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </nav>
-            </aside>
-        </div>
-        <!--left-fixed -navigation-->
-        <!-- header-starts -->
-        <div class="sticky-header header-section">
-            <div class="header-left">
-            <!--toggle button start-->
-            <!--toggle button end-->
-            <div class="profile_details_left">
-                <div class="clearfix"></div>
-            </div>
-            <!--notification menu end -->
-            <div class="clearfix"></div>
-            </div>
-            <div class="header-right">
-            <!--search-box-->
-            <div class="search-box">
-                <form class="input">
-                <input
-                    class="sb-search-input input__field--madoka"
-                    placeholder="Search..."
-                    type="search"
-                    id="input-31"
-                />
-                <label class="input__label" for="input-31">
-                    <svg
-                    class="graphic"
-                    width="100%"
-                    height="100%"
-                    viewBox="0 0 404 77"
-                    preserveAspectRatio="none"
-                    >
-                    <path d="m0,0l404,0l0,77l-404,0l0,-77z" />
-                    </svg>
-                </label>
-                </form>
-            </div>
-            <!--//end-search-box-->
-            <div class="profile_details">
-                <ul>
-                <li class="dropdown profile_details_drop">
-                    <a
-                    href="#"
-                    class="dropdown-toggle"
-                    data-toggle="dropdown"
-                    aria-expanded="false"
-                    >
-                    <div class="profile_img">
-                        <span class="prfil-img"
-                        ><img src="images/2.jpg" alt="" />
-                        </span>
-                        <div class="user-name">
-                        <p>Name admin</p>
-                        <span>Administrator</span>
+                                    <li class="treeview {{($segment == 'movie') ? 'active' : ''}}">
+                                        <a href="#">
+                                            <i class="fa fa-film"></i>
+                                            <span>Phim</span>
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </a>
+                                        <ul class="treeview-menu">
+                                            <li>
+                                            <a href="{{route('movie.create')}}"
+                                                ><i class="fa fa-angle-right"></i>Thêm phim</a
+                                            >
+                                            </li>
+                                            <li>
+                                            <a href="{{route('movie.index')}}"
+                                                ><i class="fa fa-angle-right"></i> Liệt kê tập phim</a
+                                            >
+                                            </li>
+                                        </ul>
+                                        </li>
+                                        <li class="treeview {{($segment == 'episode') ? 'active' : ''}}">
+                                            <a href="#">
+                                                <i class="fa fa-laptop"></i>
+                                                <span>Tập phim</span>
+                                                <i class="fa fa-angle-left pull-right"></i>
+                                            </a>
+                                            <ul class="treeview-menu">
+                                                <li>
+                                                <a href="{{route('episode.create')}}"
+                                                    ><i class="fa fa-angle-right"></i>Thêm tập phim</a
+                                                >
+                                                </li>
+                                                <li>
+                                                <a href="{{route('episode.index')}}"
+                                                    ><i class="fa fa-angle-right"></i> Liệt kê tập phim</a
+                                                >
+                                                </li>
+                                            </ul>
+                                            </li>
+                        </ul>
                         </div>
-                        <i class="fa fa-angle-down lnr"></i>
-                        <i class="fa fa-angle-up lnr"></i>
+                        <!-- /.navbar-collapse -->
+                    </nav>
+                    </aside>
+                </div>
+                <!--left-fixed -navigation-->
+                <!-- header-starts -->
+                <div class="sticky-header ">
+                    <div class="header-left">
+                    <!--toggle button start-->
+                    <!--toggle button end-->
+                    <div class="profile_details_left">
                         <div class="clearfix"></div>
                     </div>
-                    </a>
-                    <ul class="dropdown-menu drp-mnu">
-                    {{-- <li>
-                        <a href="#"><i class="fa fa-cog"></i> Settings</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-user"></i> My Account</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-suitcase"></i> Profile</a>
-                    </li> --}}
-                    <li>
-                        {{-- <a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i> Logout</a> --}}
-                        <form  action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <i class="fa fa-sign-out"></i>
-                            <input type="submit" class="btn btn-danger btn-sm" value="Logout">
+                    <!--notification menu end -->
+                    <div class="clearfix"></div>
+                    </div>
+                    <div class="header-right">
+                    <!--search-box-->
+                    <div class="search-box">
+                        <form class="input">
+                        <input
+                            class="sb-search-input input__field--madoka"
+                            placeholder="Search..."
+                            type="search"
+                            id="input-31"
+                        />
+                        <label class="input__label" for="input-31">
+                            <svg
+                            class="graphic"
+                            width="100%"
+                            height="100%"
+                            viewBox="0 0 404 77"
+                            preserveAspectRatio="none"
+                            >
+                            <path d="m0,0l404,0l0,77l-404,0l0,-77z" />
+                            </svg>
+                        </label>
                         </form>
-                    </li>
-                    </ul>
-                </li>
-                </ul>
+                    </div>
+                    <!--//end-search-box-->
+                    <div class="profile_details">
+                        <ul>
+                        <li class="dropdown profile_details_drop">
+                            <a
+                            href="#"
+                            class="dropdown-toggle"
+                            data-toggle="dropdown"
+                            aria-expanded="false"
+                            >
+                            <div class="profile_img">
+                                <span class="prfil-img"
+                                ><img src="images/2.jpg" alt="" />
+                                </span>
+                                <div class="user-name">
+                                <p>{{ Auth::user()->name }}</p>
+                                <span>Adminstator</span>
+                                </div>
+                                <i class="fa fa-angle-down lnr"></i>
+                                <i class="fa fa-angle-up lnr"></i>
+                                <div class="clearfix"></div>
+                            </div>
+                            </a>
+                            <ul class="dropdown-menu drp-mnu">
+                            {{-- <li>
+                                <a href="#"><i class="fa fa-cog"></i> Settings</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-user"></i> My Account</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-suitcase"></i> Profile</a>
+                            </li> --}}
+                            <li>
+                                {{-- <a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i> Logout</a> --}}
+                                <form  action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <i class="fa fa-sign-out"></i>
+                                    <input type="submit" class="btn btn-danger btn-sm" value="Logout">
+                                </form>
+                            </li>
+                            </ul>
+                        </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <!-- //header-ends -->
+                <!-- main content start-->
+                <div id="page-wrapper">
+                    <div class="main-page">
+                    <div class="col_3">
+                        <div class="col-md-3 widget widget1">
+                        <div class="r3_counter_box">
+                            <i class="pull-left fa fa-file icon-rounded"></i>
+                            <div class="stats">
+                            <h5><strong>{{$category_total}}</strong></h5>
+                            <span>Danh mục</span>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-3 widget widget1">
+                        <div class="r3_counter_box">
+                            <i class="pull-left fa fa-child user1 icon-rounded"></i>
+                            <div class="stats">
+                            <h5><strong>{{$genre_total}}</strong></h5>
+                            <span>Thể loại</span>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-3 widget widget1">
+                        <div class="r3_counter_box">
+                            <i class="pull-left fa fa-globe user2 icon-rounded"></i>
+                            <div class="stats">
+                            <h5><strong>{{$country_total}}</strong></h5>
+                            <span>Quốc gia</span>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-3 widget widget1">
+                        <div class="r3_counter_box">
+                            <i class="pull-left fa fa-film dollar1 icon-rounded"></i>
+                            <div class="stats">
+                            <h5><strong>{{$movie_total}}</strong></h5>
+                            <span>Phim</span>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-3 widget">
+                        <div class="r3_counter_box">
+                            <i class="pull-left fa fa-laptop dollar2 icon-rounded"></i>
+                            <div class="stats">
+                            <h5><strong>{{$episode_total}}</strong></h5>
+                            <span>Tập phim</span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    
+                    <!-- for amcharts js -->
+                    <script src="{{asset('backend/js/amcharts.js')}}"></script>
+                    <script src="{{asset('backend/js/serial.js')}}"></script>
+                    <script src="{{asset('backend/js/export.min.js')}}"></script>
+                    <link
+                        rel="stylesheet"
+                        href="{{asset('backend/css/export.css')}}"
+                        type="text/css"
+                        media="all"
+                    />
+                    <script src="{{asset('backend/js/light.js')}}"></script>
+                    <!-- for amcharts js -->
+                    <script src="{{asset('backend/js/index1.js')}}"></script>
+                    <div class="col-md-5" style="witdh: 100%">
+                        @yield('content')
+                    </div>
+                    </div>
+                </div>
+                <!--footer-->
+                <!--//footer-->
+                <!-- new added graphs chart js-->
             </div>
-            <div class="clearfix"></div>
-            </div>
-            <div class="clearfix"></div>
         </div>
-        <!-- //header-ends -->
-        <!-- main content start-->
-        <div id="page-wrapper">
-            <div class="main-page">
-            <div class="col_3">
-                <div class="col-md-3 widget widget1">
-                <div class="r3_counter_box">
-                    <i class="pull-left fa fa-file icon-rounded"></i>
-                    <div class="stats">
-                    <h5><strong>{{$category_total}}</strong></h5>
-                    <span>Danh mục</span>
-                    </div>
-                </div>
-                </div>
-                <div class="col-md-3 widget widget1">
-                <div class="r3_counter_box">
-                    <i class="pull-left fa fa-child user1 icon-rounded"></i>
-                    <div class="stats">
-                    <h5><strong>{{$genre_total}}</strong></h5>
-                    <span>Thể loại</span>
-                    </div>
-                </div>
-                </div>
-                <div class="col-md-3 widget widget1">
-                <div class="r3_counter_box">
-                    <i class="pull-left fa fa-globe user2 icon-rounded"></i>
-                    <div class="stats">
-                    <h5><strong>{{$country_total}}</strong></h5>
-                    <span>Quốc gia</span>
-                    </div>
-                </div>
-                </div>
-                <div class="col-md-3 widget widget1">
-                <div class="r3_counter_box">
-                    <i class="pull-left fa fa-film dollar1 icon-rounded"></i>
-                    <div class="stats">
-                    <h5><strong>{{$movie_total}}</strong></h5>
-                    <span>Phim</span>
-                    </div>
-                </div>
-                </div>
-                <div class="col-md-3 widget">
-                <div class="r3_counter_box">
-                    <i class="pull-left fa fa-laptop dollar2 icon-rounded"></i>
-                    <div class="stats">
-                    <h5><strong>{{$episode_total}}</strong></h5>
-                    <span>Tập phim</span>
-                    </div>
-                </div>
-                </div>
-            </div>
-            
-            <!-- for amcharts js -->
-            <script src="{{asset('backend/js/amcharts.js')}}"></script>
-            <script src="{{asset('backend/js/serial.js')}}"></script>
-            <script src="{{asset('backend/js/export.min.js')}}"></script>
-            <link
-                rel="stylesheet"
-                href="{{asset('backend/css/export.css')}}"
-                type="text/css"
-                media="all"
-            />
-            <script src="{{asset('backend/js/light.js')}}"></script>
-            <!-- for amcharts js -->
-            <script src="{{asset('backend/js/index1.js')}}"></script>
-            <div class="col-md-5" style="witdh: 100%">
-                @yield('content')
-            </div>
-            </div>
-        </div>
-        <!--footer-->
-        <!--//footer-->
-        <!-- new added graphs chart js-->
-    </div>
-</div>
-        @else
-            @yield('content_login')
+       
+    @else
+        @yield('content_login')
         {{-- <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -499,7 +497,7 @@
                 </div>
             </div>
         </div> --}}
-        @endif
+    @endif
         <script src="{{asset('backend/js/Chart.bundle.js')}}"></script>
         <script src="{{asset('backend/js/utils.js')}}"></script>
         <!-- new added graphs chart js-->

@@ -79,7 +79,7 @@ class IndexController extends Controller
         $country = Country::orderBy('id','DESC')->where('status',1)->get();
         $movie = Movie::with('category','genre','country')->where('slug',$slug)->where('status',1)->first();
         $releated = Movie::with('category','genre','country')->where('category_id',$movie->category->id)->orderBy(DB::raw('RAND()'))->whereNotIn('slug',[$slug])->get();
-        $episode = Episode::with('movie')->where('movie_id',$movie->id)->orderBy('episode','DESC')->get();
+        $episode = Episode::with('movie')->where('movie_id',$movie->id)->orderBy('episode','DESC')->take(4)->get();
         $so = Episode::with('movie')->where('movie_id',$movie->id)->count();
         $episode_tapdau = Episode::with('movie')->where('movie_id',$movie->id)->orderBy('episode','ASC')->take(1)->first();
         return view('Clients.Movie',compact('category', 'genre', 'country','movie','releated','episode','episode_tapdau','so'));
@@ -94,7 +94,7 @@ class IndexController extends Controller
         if(isset($tap))
         {
             $tapphim = $tap;
-            $tapphim = substr($tap,4,1);
+            $tapphim = substr($tap,4,2);
             $episode = Episode::where('movie_id',$movie->id)->where('episode',$tapphim)->first();
         }
         else

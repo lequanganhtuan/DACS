@@ -28,10 +28,14 @@
                   </div>
                   <div class="movie_info col-xs-12">
                      <div class="movie-poster col-md-3">
-                        <img class="movie-thumb" src="{{asset('uploads/movie/'.$movie->image)}}" alt="GÓA PHỤ ĐEN">
+                        <img class="movie-thumb" src="{{asset('uploads/movie/'.$movie->image)}}" alt="">
                         <div class="bwa-content">
                            <div class="loader"></div>
-                           <a href="{{ url('xem-phim/'.$movie->slug.'/tap-'.$episode_tapdau->episode) }}" class="bwac-btn">
+                           @if($episode_tapdau == null)
+                              
+                           @else
+                              <a href="{{ url('xem-phim/'.$movie->slug.'/tap-'.$episode_tapdau->episode) }}" class="bwac-btn">
+                           @endif
                            <i class="fa fa-play"></i>
                            </a>
                         </div>
@@ -60,7 +64,10 @@
                               </li>
                            <li class="list-info-group-item"><span>Tập mới nhất</span> : 
                               @foreach($episode as $key =>$ep)
+                              @if($episode == null)
+                              @else
                               <a href="{{url('xem-phim/'.$ep->movie->slug.'/tap-'.$ep->episode)}}" rel="tag">Tập {{$ep->episode}}</a>
+                              @endif
                               @endforeach
                            </li>
                            <li class="list-info-group-item"><span>Danh mục</span> : <a href="{{route('category', $movie->category->slug)}}" rel="tag">{{$movie->category->title}}</a></li>

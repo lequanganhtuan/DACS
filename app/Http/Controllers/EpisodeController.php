@@ -99,8 +99,6 @@ class EpisodeController extends Controller
         $episode -> movie_id = $data['movie_id'];
         $episode -> linkphim = $data['linkphim'];
         $episode -> episode = $data['episode'];
-        $movie->ngaycapnhat = Carbon::now('Asia/Ho_Chi_Minh');
-        $movie->save();
         $episode->save();
         return redirect()->back();
     }

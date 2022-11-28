@@ -6,7 +6,7 @@
             <div class="panel-heading">
                 <div class="row">
                 <div class="col-xs-6">
-                    <div class="yoast_breadcrumb hidden-xs"><span><span><a href="{{route('homepage')}}">Home</a> » <span class="breadcrumb_last" aria-current="page">2021</span></span></span></div>
+                    <div class="yoast_breadcrumb hidden-xs"><span><span><a href="{{route('homepage')}}">Home</a> </span></span></div>
                 </div>
                 </div>
             </div>
@@ -17,7 +17,7 @@
         <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
             <section>
                 <div class="section-bar clearfix">
-                <h1 class="section-title"><span>Phim 2020</span></h1>
+                <h1 class="section-title"><span>Tìm kiếm</span></h1>
                 </div>
                 <div class="halim_box">
                 @foreach($movie as $key => $home)
@@ -25,7 +25,13 @@
                     <div class="halim-item">
                         <a class="halim-thumb" href="{{route('movie', $home->slug)}}" title="{{$home->title}}">
                             <figure><img class="lazy img-responsive" src="{{asset('uploads/movie/'.$home->image)}}" alt="" title="{{$home->title}}"></figure>
-                            <span class="status">5/5</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> 
+                            <span class="status">@if($home -> resolution == 1)
+                                SD
+                             @elseif($home -> resolution == 0)
+                                HD
+                             @else
+                                Full HD
+                             @endif</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>{{$home->phude}}</span> 
                             <div class="icon_overlay"></div>
                             <div class="halim-post-title-box">
                             <div class="halim-post-title ">
