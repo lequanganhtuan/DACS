@@ -50,7 +50,7 @@ class CategoryController extends Controller
                 'title.required' => 'Vui lòng nhập tên danh mục',
                 'slug.unique' => 'Slug đã tồn tại vui lòng nhập slug mới',
                 'slug.required' => 'Vui lòng nhập slug danh mục',
-                'description.required' => 'Vui lòng nhập tên danh mục',
+                'description.required' => 'Vui lòng nhập mô tả',
 
             ]
         );
@@ -109,7 +109,7 @@ class CategoryController extends Controller
                 'title.required' => 'Vui lòng nhập tên danh mục',
                 'slug.unique' => 'Slug đã tồn tại vui lòng nhập slug mới',
                 'slug.required' => 'Vui lòng nhập slug danh mục',
-                'description.required' => 'Vui lòng nhập tên danh mục',
+                'description.required' => 'Vui lòng nhập mô tả',
 
             ]
         );

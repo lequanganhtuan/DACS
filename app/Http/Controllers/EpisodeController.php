@@ -40,7 +40,20 @@ class EpisodeController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validate(
+            [
+                'movie_id' => 'required',
+                'linkphim' => 'required|unique:episodes',
+                'episode' => 'required',
+            ],
+            [
+                'movie_id.required' => 'Vui lòng chọn phim cần thêm tập',
+                'linkphim.unique' => 'Link phim đã tồn tại',
+                'linkphim.required' => 'Link phim không được để trống',
+                'episode.required' => 'Vui lòng chọn tập',
+
+            ]
+        );
         $episode =  new Episode();
         $check = Episode::where('episode', $data['episode'])->where('movie_id', $data['movie_id'])->count();
         if ($check > 0 ) {
@@ -56,6 +69,7 @@ class EpisodeController extends Controller
             $movie->ngaycapnhat = Carbon::now('Asia/Ho_Chi_Minh');
             $movie->save();
             $episode->save();
+            toastr() ->success('Thành công','Thêm tập phim thành công');
         }
         return redirect()->back();
     }
@@ -94,12 +108,27 @@ class EpisodeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
+        // $data = $request->all();
+        $data = $request->validate(
+            [
+                'movie_id' => 'required',
+                'linkphim' => 'required|unique:episodes',
+                'episode' => 'required',
+            ],
+            [
+                'movie_id.required' => 'Vui lòng chọn phim cần thêm tập',
+                'linkphim.unique' => 'Link phim đã tồn tại',
+                'linkphim.required' => 'Link phim không được để trống',
+                'episode.required' => 'Vui lòng chọn tập',
+
+            ]
+        );
         $episode =  Episode::find($id);
         $episode -> movie_id = $data['movie_id'];
         $episode -> linkphim = $data['linkphim'];
         $episode -> episode = $data['episode'];
         $episode->save();
+        toastr() ->success('Thành công','Chỉnh sửa tập phim thành công');
         return redirect()->back();
     }
 
@@ -112,6 +141,7 @@ class EpisodeController extends Controller
     public function destroy($id)
     {
         $episode = Episode::find($id)->delete();
+        toastr('Đã xóa thành công', 'warning');
         return redirect()->back();
     }
     public function select_movie()

@@ -236,7 +236,7 @@
                                             </li>
                                             <li>
                                             <a href="{{route('movie.index')}}"
-                                                ><i class="fa fa-angle-right"></i> Liệt kê tập phim</a
+                                                ><i class="fa fa-angle-right"></i> Liệt kê phim</a
                                             >
                                             </li>
                                         </ul>

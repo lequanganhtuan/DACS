@@ -4,7 +4,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <a href="{{route('episode.create')}}" class="btn btn-primary">Thêm tập phim</a>
             <div class="card">
                 <div class="card-body">
                     @if (session('status'))

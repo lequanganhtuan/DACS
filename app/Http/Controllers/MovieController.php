@@ -50,8 +50,45 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
+        // $data = $request->validate(
+        //     [
+        //         'title' => 'required|unique:movies|max:255',
+        //         'slug' => 'required|unique:movies|max:255',
+        //         'description' => 'required',
+        //         'status'=>'required'
+        //     ],
+        //     [
+        //         'title.unique' => 'Tên danh mục đã tồn tại vui lòng nhập tên mới',
+        //         'title.required' => 'Vui lòng nhập tên danh mục',
+        //         'slug.unique' => 'Slug đã tồn tại vui lòng nhập slug mới',
+        //         'slug.required' => 'Vui lòng nhập slug danh mục',
+        //         'description.required' => 'Vui lòng nhập mô tả',
+
+        //     ]
+        // );
+        $data = $request->validate(
+            [
+                'title' => 'required|unique:movies|max: 255',
+                'slug' => 'required|unique:movies|max: 255',
+                'description' => 'required',
+                'anh' => 'required|mimes: jpq,png,jpeg,gif,jfif|max:10000',
+                'time' => 'required',
+                'sotap'=>'required'
+            ],
+            [
+                'title.required' => 'Vui lòng nhập tiêu đề phim',
+                'title.unique' => 'Phim này đã tồn tại',
+                'slug.required' => 'Vui lòng nhập slug',
+                'slug.unique' => 'Phim này đã tồn tại',
+                'anh.mimes' =>'Vui lòng chọn đúng định dạng ảnh (jpq,png,jpeg,gif,jfif)',
+                'time.required' => 'Vui lòng nhập thời lượng phim',
+                'sotap.required' => 'Vui lòng nhập số tập',
+                'anh.required' => 'Vui lòng chọn ảnh',
+                'description.required' => 'Vui lòng nhập mô tả'
+
+            ]
+        );
         $des = 'uploads/movie';
-        $data = $request->all();
         $movie = new Movie();
         $movie->title = $data['title'];
         $movie->hot = $data['hot'];
@@ -73,6 +110,7 @@ class MovieController extends Controller
         $movie->image=$get_image;
         $movie->save();
         $request->file('anh')->move($des,$get_image);
+        toastr() ->success('Thành công','Thêm phim thành công');
         return redirect()->back();
     }
 
@@ -112,7 +150,27 @@ class MovieController extends Controller
     public function update(Request $request, $id)
     {
         $des = 'uploads/movie';
-        $data = $request->all();
+        $data = $request->validate(
+            [
+                'title' => 'required|unique:movies|max: 255',
+                'slug' => 'required|unique:movies|max: 255',
+                'description' => 'required',
+                'anh' => 'mimes: jpq,png,jpeg,gif,jfif|max:10000',
+                'time' => 'required',
+                'sotap'=>'required'
+            ],
+            [
+                'title.required' => 'Vui lòng nhập tiêu đề phim',
+                'title.unique' => 'Phim này đã tồn tại',
+                'slug.required' => 'Vui lòng nhập slug',
+                'slug.unique' => 'Phim này đã tồn tại',
+                'anh.mimes' =>'Vui lòng chọn đúng định dạng ảnh (jpq,png,jpeg,gif,jfif)',
+                'time.required' => 'Vui lòng nhập thời lượng phim',
+                'sotap.required' => 'Vui lòng nhập số tập',
+                'description.required' => 'Vui lòng nhập mô tả'
+
+            ]
+        );
         $movie = Movie::find($id);
         $movie->title = $data['title'];
         $movie->hot = $data['hot'];
@@ -140,7 +198,7 @@ class MovieController extends Controller
             $request->file('anh')->move($des,$get_image);
         }
         $movie->save();
-        
+        toastr() ->success('Thành công','Chỉnh sửa phim thành công');
         return redirect()->back();
     }
 

@@ -131,6 +131,7 @@ class GenreController extends Controller
     public function destroy($id)
     {
         Genre::find($id)->delete();
+        toastr('Đã xóa thành công', 'warning');
         return redirect()->back();
     }
 }
