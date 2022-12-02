@@ -60,7 +60,14 @@
             width: 100%;
             height: 295px;
         }
+
+        html {
+           background: url({{"../public/imgs/HInh2.jpg"}});
+           background-repeat: no-repeat;
+           background-size: cover;
+        }
         </style>
+
         <!--pie-chart -->
         <!-- index page sales reviews visitors pie chart -->
         <script src="{{asset('backend/js/pie-chart.js')}}" type="text/javascript"></script>
@@ -122,7 +129,7 @@
         <!-- //requried-jsfiles-for owl -->
     </head>
 
-    <body class="cbp-spmenu-push">
+    <body class="cbp-spmenu-push" style="background: url({{"../public/imgs/HInh2.jpg"}});">
         @if(Auth::check())
                 <div class="main-content">
                 <div
@@ -317,7 +324,7 @@
                                 </span>
                                 <div class="user-name">
                                 <p>{{ Auth::user()->name }}</p>
-                                <span>Adminstator</span>
+                                <span style="color: #fff">Adminstator</span>
                                 </div>
                                 <i class="fa fa-angle-down lnr"></i>
                                 <i class="fa fa-angle-up lnr"></i>
@@ -352,7 +359,7 @@
                 </div>
                 <!-- //header-ends -->
                 <!-- main content start-->
-                <div id="page-wrapper">
+                <div id="page-wrapper" style="background: url({{"../public/imgs/HInh2.jpg"}});">
                     <div class="main-page">
                     <div class="col_3">
                         <div class="col-md-3 widget widget1">
