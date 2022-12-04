@@ -150,27 +150,7 @@ class MovieController extends Controller
     public function update(Request $request, $id)
     {
         $des = 'uploads/movie';
-        $data = $request->validate(
-            [
-                'title' => 'required|unique:movies|max: 255',
-                'slug' => 'required|unique:movies|max: 255',
-                'description' => 'required',
-                'anh' => 'mimes: jpq,png,jpeg,gif,jfif|max:10000',
-                'time' => 'required',
-                'sotap'=>'required'
-            ],
-            [
-                'title.required' => 'Vui lòng nhập tiêu đề phim',
-                'title.unique' => 'Phim này đã tồn tại',
-                'slug.required' => 'Vui lòng nhập slug',
-                'slug.unique' => 'Phim này đã tồn tại',
-                'anh.mimes' =>'Vui lòng chọn đúng định dạng ảnh (jpq,png,jpeg,gif,jfif)',
-                'time.required' => 'Vui lòng nhập thời lượng phim',
-                'sotap.required' => 'Vui lòng nhập số tập',
-                'description.required' => 'Vui lòng nhập mô tả'
-
-            ]
-        );
+        $data = $request->all();
         $movie = Movie::find($id);
         $movie->title = $data['title'];
         $movie->hot = $data['hot'];
