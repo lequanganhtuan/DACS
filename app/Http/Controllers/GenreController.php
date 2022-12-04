@@ -98,15 +98,13 @@ class GenreController extends Controller
     {
         $data = $request->validate(
             [
-                'title' => 'required|unique:genres|max:255',
-                'slug' => 'required|unique:genres|max:255',
+                'title' => 'required|max:255',
+                'slug' => 'required|max:255',
                 'description' => 'required',
                 'status'=>'required'
             ],
             [
-                'title.unique' => 'Tên thể loại đã tồn tại vui lòng nhập tên mới',
                 'title.required' => 'Vui lòng nhập tên thể loại',
-                'slug.unique' => 'Slug đã tồn tại vui lòng nhập slug mới',
                 'slug.required' => 'Vui lòng nhập slug',
                 'description.required' => 'Vui lòng nhập mô tả',
 
