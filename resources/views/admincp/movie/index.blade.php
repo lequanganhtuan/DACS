@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" style="padding-top: 20px">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <table class="table" id="phim">
                 <thead>
-                    <tr>
+                    <tr style="color: orange">
                         <th scope="col">#</th>
                         <th scope="col">Tiêu đề</th>
                         <th scope="col">Đạo diễn</th>
@@ -30,7 +30,7 @@
                     </thead>
                     <tbody>
                         @foreach($list as $key => $cate)
-                        <tr>
+                        <tr style="color: #fff">
                             <th scope="row">{{$key}}</th>
                             <td>{{$cate -> title}}</td>
                             <td>{{$cate -> director}}</td>

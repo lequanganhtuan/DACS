@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" style="padding-top: 20px">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -13,7 +13,7 @@
                     @endif
             <table class="table" id="tapphim">
                 <thead>
-                    <tr>
+                    <tr  style="color: orange">
                         <th scope="col">#</th>
                         <th scope="col">Tên phim</th>
                         <th scope="col">Hình ảnh</th>
@@ -24,7 +24,7 @@
                     </thead>
                     <tbody>
                         @foreach($list as $key => $cate)
-                        <tr>
+                        <tr  style="color: #fff">
                             <th scope="row">{{$key}}</th>
                             <td>{{$cate -> movie -> title}}</td>
                             <td><img width ="30%" src="{{asset('uploads/movie/'.$cate -> movie -> image)}}" alt=""></td>

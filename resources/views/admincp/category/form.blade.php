@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" style="padding-top: 20px">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -26,7 +26,7 @@
                     @else
                     {!! Form::open(['route'=>['category.update',$category->id],'method'=>'PUT']) !!}
                     @endif
-                        <div class="group-form">
+                        <div class="group-form" style="color: #fff">
                             {!! Form::label('title', 'Title', []) !!}
                             {!! Form::text('title', isset($category) ? $category->title : '', ['class'=>'form-control','placeholder'=>'Điền dữ liệu vào...', 'id'=>'slug', 'onkeyup'=>'ChangeToSlug()']) !!}
                         </div>

@@ -61,8 +61,9 @@
             height: 295px;
         }
 
+        
         html {
-           background: url({{"../public/imgs/HInh2.jpg"}});
+           background: url({{ asset("../public/imgs/HInh2.jpg") }});
            background-repeat: no-repeat;
            background-size: cover;
         }
@@ -294,7 +295,9 @@
                             placeholder="Search..."
                             type="search"
                             id="input-31"
+                            style="border-radius: 10px"
                         />
+
                         <label class="input__label" for="input-31">
                             <svg
                             class="graphic"

@@ -3135,6 +3135,7 @@ h3.w3_inner_tittle.two {
     position: relative;
 }
 .btn {
+    margin-top: 20px;
     display: inline-block;
     margin-bottom: 0;
     text-align: center;
@@ -8467,6 +8468,32 @@ h4.asd label {
 		font-size: 1em;
 	}
 }
+
+.card-header {
+  font-size: 20px;
+  font-weight: 800;
+  padding-bottom: 12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-transform: uppercase;
+  color: orange;
+}
+
+label {
+  padding-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.form-control {
+  border-radius: 5px;
+  /* background: rgba(55, 19, 170, 0.8); */
+}
+
+.group-form {
+  color: #fff;
+}
+
 /*--//responsive-design---*/
 
 
