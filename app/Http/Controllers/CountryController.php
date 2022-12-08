@@ -60,7 +60,7 @@ class CountryController extends Controller
         $country -> status =  $data['status'];
         $country ->save();
         toastr()->success('Thành công','Thêm quốc gia thành công');
-        return redirect()->back();
+        return redirect()->route('country.index');
     }
 
     /**
@@ -118,7 +118,7 @@ class CountryController extends Controller
         $country -> status =  $data['status'];
         $country ->save();
         toastr()->success('Thành công','Cập nhật quốc gia thành công');
-        return redirect()->back();
+        return redirect()->route('country.index');
     }
 
     /**

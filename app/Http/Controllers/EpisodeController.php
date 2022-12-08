@@ -57,7 +57,7 @@ class EpisodeController extends Controller
         $episode =  new Episode();
         $check = Episode::where('episode', $data['episode'])->where('movie_id', $data['movie_id'])->count();
         if ($check > 0 ) {
-            
+            toastr('Tập phim đã tồn tại', 'warning');
             return redirect()->back();
         }
         else
@@ -71,7 +71,7 @@ class EpisodeController extends Controller
             $episode->save();
             toastr() ->success('Thành công','Thêm tập phim thành công');
         }
-        return redirect()->back();
+        return redirect()->route('episode.index');
     }
 
     /**
@@ -108,28 +108,28 @@ class EpisodeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        // $data = $request->validate(
-        //     [
-        //         'movie_id' => 'required',
-        //         'linkphim' => 'required|unique:episodes',
-        //         'episode' => 'required',
-        //     ],
-        //     [
-        //         'movie_id.required' => 'Vui lòng chọn phim cần thêm tập',
-        //         'linkphim.unique' => 'Link phim đã tồn tại',
-        //         'linkphim.required' => 'Link phim không được để trống',
-        //         'episode.required' => 'Vui lòng chọn tập',
+        // $data = $request->all();
+        $data = $request->validate(
+            [
+                'movie_id' => 'required',
+                'linkphim' => 'required|unique:episodes',
+                'episode' => 'required',
+            ],
+            [
+                'movie_id.required' => 'Vui lòng chọn phim cần thêm tập',
+                'linkphim.unique' => 'Link phim đã tồn tại',
+                'linkphim.required' => 'Link phim không được để trống',
+                'episode.required' => 'Vui lòng chọn tập',
 
-        //     ]
-        // );
+            ]
+        );
         $episode =  Episode::find($id);
         $episode -> movie_id = $data['movie_id'];
         $episode -> linkphim = $data['linkphim'];
         $episode -> episode = $data['episode'];
         $episode->save();
         toastr() ->success('Thành công','Chỉnh sửa tập phim thành công');
-        return redirect()->back();
+        return redirect()->route('episode.index');
     }
 
     /**

@@ -61,7 +61,7 @@ class CategoryController extends Controller
         $category -> status =  $data['status'];
         $category ->save();
         toastr() ->success('Thành công','Thêm danh mục phim thành công');
-        return redirect()->back();
+        return redirect()->route('category.index');
     }
 
     /**
@@ -118,7 +118,7 @@ class CategoryController extends Controller
         $category -> status =  $data['status'];
         $category ->save();
         toastr() ->success('Thành công','Cập nhật danh mục phim thành công');
-        return redirect()->back();
+        return redirect()->route('category.index');
     }
 
     /**
