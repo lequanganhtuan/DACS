@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" style="padding-top: 20px">
+<div class="container" style="padding-top: 20px; padding-left: 0px">
     <div class="row justify-content-center">
-        <div class="col-lg-12">
-            <table class="table" id="phim">
+        <div class="col-md-12" style="">
+            <table class="table" id="phim" style="">
                 <thead>
-                    <tr style="color: orange">
+                    <tr style="color: orange; width: 100%; ">
                         <th scope="col">#</th>
                         <th scope="col">Tiêu đề</th>
                         <th scope="col">Đạo diễn</th>
@@ -23,7 +23,7 @@
                         <th scope="col">Chất lượng</th>
                         <th scope="col">Phụ đề</th>
                         <th scope="col">Ngày tạo</th>
-                        <th scope="col">Ngày cập nhật</th>
+                        <th scope="col">cập nhật</th>
                         <th scope="col">Quản lí</th>
                         
                     </tr>
@@ -35,7 +35,14 @@
                             <td>{{$cate -> title}}</td>
                             <td>{{$cate -> director}}</td>
                             <td><img width ="120%" src="{{asset('uploads/movie/'.$cate->image)}}" alt=""></td>
-                            <td>{{$cate -> description}}</td>
+                            <td 
+                            style="overflow: hidden;
+                            text-overflow: ellipsis;
+                            line-height: 30px;
+                            -webkit-line-clamp: 5;
+                            height: 140px;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;">{{$cate -> description}}</td>
                             <td>{{$cate -> time}}</td>
                             <td>{{$cate -> sotap}}</td>
                             <td>{{$cate -> slug}}</td>
