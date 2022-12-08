@@ -108,21 +108,21 @@ class EpisodeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $data = $request->all();
-        $data = $request->validate(
-            [
-                'movie_id' => 'required',
-                'linkphim' => 'required|unique:episodes',
-                'episode' => 'required',
-            ],
-            [
-                'movie_id.required' => 'Vui lòng chọn phim cần thêm tập',
-                'linkphim.unique' => 'Link phim đã tồn tại',
-                'linkphim.required' => 'Link phim không được để trống',
-                'episode.required' => 'Vui lòng chọn tập',
+        $data = $request->all();
+        // $data = $request->validate(
+        //     [
+        //         'movie_id' => 'required',
+        //         'linkphim' => 'required|unique:episodes',
+        //         'episode' => 'required',
+        //     ],
+        //     [
+        //         'movie_id.required' => 'Vui lòng chọn phim cần thêm tập',
+        //         'linkphim.unique' => 'Link phim đã tồn tại',
+        //         'linkphim.required' => 'Link phim không được để trống',
+        //         'episode.required' => 'Vui lòng chọn tập',
 
-            ]
-        );
+        //     ]
+        // );
         $episode =  Episode::find($id);
         $episode -> movie_id = $data['movie_id'];
         $episode -> linkphim = $data['linkphim'];

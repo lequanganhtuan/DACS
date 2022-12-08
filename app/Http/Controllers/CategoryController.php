@@ -99,15 +99,13 @@ class CategoryController extends Controller
     {
         $data = $request->validate(
             [
-                'title' => 'required|unique:categories|max:255',
-                'slug' => 'required|unique:categories|max:255',
+                'title' => 'required|max:255',
+                'slug' => 'required|max:255',
                 'description' => 'required',
                 'status'=>'required'
             ],
             [
-                'title.unique' => 'Tên danh mục đã tồn tại vui lòng nhập tên mới',
                 'title.required' => 'Vui lòng nhập tên danh mục',
-                'slug.unique' => 'Slug đã tồn tại vui lòng nhập slug mới',
                 'slug.required' => 'Vui lòng nhập slug danh mục',
                 'description.required' => 'Vui lòng nhập mô tả',
 

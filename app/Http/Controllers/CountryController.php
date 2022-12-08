@@ -98,15 +98,14 @@ class CountryController extends Controller
     {
         $data = $request->validate(
             [
-                'title' => 'required|unique:countries|max:255',
-                'slug' => 'required|unique:countries|max:255',
+                'title' => 'required|max:255',
+                'slug' => 'required|max:255',
                 'description' => 'required',
                 'status'=>'required'
             ],
             [
-                'title.unique' => 'Tên quốc gia đã tồn tại vui lòng nhập tên mới',
+                
                 'title.required' => 'Vui lòng nhập tên danh mục',
-                'slug.unique' => 'Slug đã tồn tại vui lòng nhập slug mới',
                 'slug.required' => 'Vui lòng nhập slug quốc gia',
                 'description.required' => 'Vui lòng nhập mô tả',
 
