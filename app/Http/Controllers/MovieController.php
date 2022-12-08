@@ -50,22 +50,6 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        // $data = $request->validate(
-        //     [
-        //         'title' => 'required|unique:movies|max:255',
-        //         'slug' => 'required|unique:movies|max:255',
-        //         'description' => 'required',
-        //         'status'=>'required'
-        //     ],
-        //     [
-        //         'title.unique' => 'Tên danh mục đã tồn tại vui lòng nhập tên mới',
-        //         'title.required' => 'Vui lòng nhập tên danh mục',
-        //         'slug.unique' => 'Slug đã tồn tại vui lòng nhập slug mới',
-        //         'slug.required' => 'Vui lòng nhập slug danh mục',
-        //         'description.required' => 'Vui lòng nhập mô tả',
-
-        //     ]
-        // );
         $data = $request->validate(
             [
                 'title' => 'required|unique:movies|max: 255',
@@ -79,7 +63,9 @@ class MovieController extends Controller
                 'director'=>'required',
                 'country_id'=>'required',
                 'category_id'=>'required',
-                'genre_id'=>'required'
+                'genre_id'=>'required',
+                'resolution'=>'required',
+                'status'=>'required'
             ],
             [
                 'title.required' => 'Vui lòng nhập tiêu đề phim',
@@ -89,12 +75,12 @@ class MovieController extends Controller
                 'anh.mimes' =>'Vui lòng chọn đúng định dạng ảnh (jpq,png,jpeg,gif,jfif)',
                 'time.required' => 'Vui lòng nhập thời lượng phim',
                 'sotap.required' => 'Vui lòng nhập số tập',
-                'anh.required' => 'Vui lòng chọn ảnh',
                 'description.required' => 'Vui lòng nhập mô tả',
                 'phude.required' => 'Vui lòng nhập phụ đề phim',
                 'time.required' => 'Vui lòng nhập thời lượng phim',
                 'sotap.required' => 'Vui lòng nhập số tập phim',
-                'director.required' => 'Vui lòng nhập đạo diễn phim'
+                'director.required' => 'Vui lòng nhập đạo diễn phim',
+                'resolution.required' => 'Vui lòng nhập chất lượng phim'
 
             ]
         );
@@ -160,7 +146,6 @@ class MovieController extends Controller
     public function update(Request $request, $id)
     {
         $des = 'uploads/movie';
-        $data = $request->all();
         $data = $request->validate(
             [
                 'title' => 'required|max: 255',
@@ -174,7 +159,9 @@ class MovieController extends Controller
                 'director'=>'required',
                 'country_id'=>'required',
                 'category_id'=>'required',
-                'genre_id'=>'required'
+                'genre_id'=>'required',
+                'resolution'=>'required',
+                'status'=>'required'
             ],
             [
                 'title.required' => 'Vui lòng nhập tiêu đề phim',
@@ -186,7 +173,8 @@ class MovieController extends Controller
                 'phude.required' => 'Vui lòng nhập phụ đề phim',
                 'time.required' => 'Vui lòng nhập thời lượng phim',
                 'sotap.required' => 'Vui lòng nhập số tập phim',
-                'director.required' => 'Vui lòng nhập đạo diễn phim'
+                'director.required' => 'Vui lòng nhập đạo diễn phim',
+                'resolution.required' => 'Vui lòng nhập chất lượng phim'
 
             ]
         );
