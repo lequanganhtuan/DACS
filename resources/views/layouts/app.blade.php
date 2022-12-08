@@ -63,10 +63,10 @@
 
         
         html {
-           /* background: url({{ asset("../public/imgs/HInh2.jpg") }}); */
-           background: url("https://media.zicxa.com/2360244");
+           background: url({{ asset("../public/imgs/HInh2.jpg") }});
+           /* background: url("https://media.zicxa.com/2360244"); */
            background-repeat: no-repeat;
-           /* background-size: cover; */
+           background-size: cover;
         }
         </style>
 
