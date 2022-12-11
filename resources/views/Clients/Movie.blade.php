@@ -95,6 +95,21 @@
                </div>
             </div>
          </section>
+         <!--comment-->
+         <div class="section-bar clearfix">
+            <h2 class="section-title"><span style="color: #ffed4d;">Bình luận</span></h2>
+         </div>
+         <div class="entry-content htmlwrap clearfix">
+            @php
+               $url = Request::url();
+            @endphp
+            <div class="video-item halim-entry-box" style="background-color:white">
+               <article id="post-38424" class="item-content">
+                  <div class="fb-comments" data-href="{{$url}}" data-width="100%" data-numposts="10"></div>
+               </article>
+            </div>
+         </div>
+
          <section class="related-movies">
             <div id="halim_related_movies-2xx" class="wrap-slider">
                <div class="section-bar clearfix">
